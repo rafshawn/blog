@@ -1,0 +1,11 @@
+.DS_Store
+
+# Vitepress
+.vitepress/build
+.vitepress/public
+.vitepress/cache
+.vitepress/dist
+node_modules/
+dist/
+*.log
+*.map

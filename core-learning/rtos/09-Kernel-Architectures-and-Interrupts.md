@@ -8,14 +8,14 @@
 	- BSD, Linux, Solaris, other UNIX
 	- MacOS and Windows (kinda)
 	- FreeBSD I/O architecture:
-<img src="_resources/FreeBSD.png" width="500"/>
+<img src="/_resources/FreeBSD.png" width="500"/>
 
 ## Some questions...
 - What happens when your (user-mode) program dereferences an invalid pointer?
 	- Program sent `SIGSEGV`: *segmentation fault*...
 	- meaning **no such virtual address**
 	- i.e., if unhandled, **terminate**
-<img src="_resources/80215aa2ec6d7e08259104dfe89a7475.png" width="250"/>
+<img src="/_resources/80215aa2ec6d7e08259104dfe89a7475.png" width="250"/>
 
 - i.e., User-mode program errors trigger segmentation faults, handled by the OS kernel
 - What might happen if **kernel** code dereferences a bad pointer (e.g., a previously-freed object)?

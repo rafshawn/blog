@@ -86,7 +86,7 @@ Observing the code above, we can point out the following
 |  **Arenas** | which makes up...             |
 | **Submaps** | in a virtual address space... |
 
-![c5d49f819b17a94f261c3e917257182b.png](_resources/c5d49f819b17a94f261c3e917257182b.png)
+![c5d49f819b17a94f261c3e917257182b.png](/_resources/memory_location.png)
 
 # Allocation Strategies
 - **Best fit**: Search through free list and find chunks of free memory as big or bigger than the requested size.
@@ -126,7 +126,7 @@ Observing the code above, we can point out the following
 	- else, split block into equal buddies until $2^{k-1} \lt s \lt 2^k$
 	- coalesce buddies of size $2^{i-1}$ when they become free
 
-<img src="_resources/cb25eb78ccde46c4a876bd3db07fa2f1.png" width="300"/>
+<img src="/_resources/buddy_allocation.png" width="300"/>
 
 # Slab Allocation
 - Array of constant-size objects, bitmask of allocations

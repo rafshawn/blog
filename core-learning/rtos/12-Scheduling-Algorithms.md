@@ -99,7 +99,7 @@ $s=$ Expected service time
 	- Local variable storage (architecture dependent)
 
 ## Thread Events
-<img src="_resources/61eabf24e00404eb8824ae38877e25c6.png" width="400"/>
+<img src="/_resources/61eabf24e00404eb8824ae38877e25c6.png" width="400"/>
 
 Manages execution and synchronisation of threads in a multi-threaded environment:
 - **Spawn**: Creation by another thread
@@ -108,7 +108,7 @@ Manages execution and synchronisation of threads in a multi-threaded environment
 - **Finish**: Termination
 
 # Types of Threads
-<img src="_resources/1335c5afc122f858b2fdfab52c572a80.png" width="250"/>
+<img src="/_resources/1335c5afc122f858b2fdfab52c572a80.png" width="250"/>
 
 ## User-level Threads (ULT)
 - Managed by the application without kernel support
@@ -126,7 +126,7 @@ Manages execution and synchronisation of threads in a multi-threaded environment
 	- Interprocess multiprocessing not possible
 
 ## Kernel-level Threads (KLT)
-<img src="_resources/d6c1398c382b17736c60fb25076d08fe.png" width="250"/>
+<img src="/_resources/d6c1398c382b17736c60fb25076d08fe.png" width="250"/>
 
 - Managed by the kernel (i.e., the OS)
 - Processes create threads via API (`pthreads`)
@@ -139,7 +139,7 @@ Manages execution and synchronisation of threads in a multi-threaded environment
 	- Thread switch requires a mode switch
 
 ## Hybrid Threading
-<img src="_resources/536be26b96b23c53912b966f07912f95.png" width="250"/>
+<img src="/_resources/536be26b96b23c53912b966f07912f95.png" width="250"/>
 
 - Combines *ULT* and *KLT*
 	- ULTs mapped to (one or more) KLTs for multiprocessing

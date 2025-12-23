@@ -7,7 +7,7 @@ Deciding which task to assign to a resource at a given time, such as...
 	- **Medium-term**: Suspend, Unsuspend
 	- **Short-term**: Ready $\to$ Running
 
-<img src="_resources/9ab4b87d40528e3f88299fa13362c5d1.png" width="600"/>
+<img src="/_resources/9ab4b87d40528e3f88299fa13362c5d1.png" width="600"/>
 
 ## Long-term Scheduling
 - Involves admitting processes to the ready queue

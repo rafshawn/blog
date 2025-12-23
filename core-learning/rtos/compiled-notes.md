@@ -354,7 +354,7 @@ Observing the code above, we can point out the following
 |  **Arenas** | which makes up...             |
 | **Submaps** | in a virtual address space... |
 
-![c5d49f819b17a94f261c3e917257182b.png](_resources/c5d49f819b17a94f261c3e917257182b.png)
+![c5d49f819b17a94f261c3e917257182b.png](/_resources/c5d49f819b17a94f261c3e917257182b.png)
 
 # Allocation Strategies
 - **Best fit**: Search through free list and find chunks of free memory as big or bigger than the requested size.
@@ -394,7 +394,7 @@ Observing the code above, we can point out the following
 	- else, split block into equal buddies until $2^{k-1} \lt s \lt 2^k$
 	- coalesce buddies of size $2^{i-1}$ when they become free
 
-<img src="_resources/cb25eb78ccde46c4a876bd3db07fa2f1.png" width="300"/>
+<img src="/_resources/cb25eb78ccde46c4a876bd3db07fa2f1.png" width="300"/>
 
 # Slab Allocation
 - Array of constant-size objects, bitmask of allocations
@@ -728,14 +728,14 @@ int     msgctl(int msqid, int cmd, struct msqid_ds *buf);		// Control and manage
 	- BSD, Linux, Solaris, other UNIX
 	- MacOS and Windows (kinda)
 	- FreeBSD I/O architecture:
-<img src="_resources/FreeBSD.png" width="500"/>
+<img src="/_resources/FreeBSD.png" width="500"/>
 
 ## Some questions...
 - What happens when your (user-mode) program dereferences an invalid pointer?
 	- Program sent `SIGSEGV`: *segmentation fault*...
 	- meaning **no such virtual address**
 	- i.e., if unhandled, **terminate**
-<img src="_resources/80215aa2ec6d7e08259104dfe89a7475.png" width="250"/>
+<img src="/_resources/80215aa2ec6d7e08259104dfe89a7475.png" width="250"/>
 
 - i.e., User-mode program errors trigger segmentation faults, handled by the OS kernel
 - What might happen if **kernel** code dereferences a bad pointer (e.g., a previously-freed object)?
@@ -825,7 +825,7 @@ int     msgctl(int msqid, int cmd, struct msqid_ds *buf);		// Control and manage
 - Serves as a data structure that holds all necessary details for the OS to manage and control the process effectively
 
 ## Process Creation
-<img src="_resources/6780fd782ca70a1ba087bd8689c323cf.png" width="200"/>
+<img src="/_resources/6780fd782ca70a1ba087bd8689c323cf.png" width="200"/>
 
 1. Building the PCB to store process information
 2. Allocate memory for the process to execute
@@ -842,7 +842,7 @@ int     msgctl(int msqid, int cmd, struct msqid_ds *buf);		// Control and manage
 - i.e., allows OS to efficiently manage multiple processes by switching between them to utilise system resources effectively
 
 ## Process Termination
-<img src="_resources/1ae4bdc2bd35f373701bd55b4de0f82f.png" width="200"/>
+<img src="/_resources/1ae4bdc2bd35f373701bd55b4de0f82f.png" width="200"/>
 
 Occurs when a process exits due to reasons such as:
 - Calling `exit(2)` function
@@ -851,7 +851,7 @@ Occurs when a process exits due to reasons such as:
 - Exceeding resource limits
 
 ## Queueing Model
-<img src="_resources/cc4aa6da91db1ebcb87a7ec05a867574.png" width="400"/>
+<img src="/_resources/cc4aa6da91db1ebcb87a7ec05a867574.png" width="400"/>
 
 Analysis and optimisation of processes waiting to be executed
 
@@ -863,11 +863,11 @@ Analysis and optimisation of processes waiting to be executed
 	- Running
 	- Exit
 - In this model, a process is either actively running, or has been terminated.
-	<img src="_resources/e95c1c216baee8f65191d24d7a634f4f.png" width="500"/>
-	<img src="_resources/acc2f4393391112f4e2335964de58d81.png" width="500"/>
+	<img src="/_resources/e95c1c216baee8f65191d24d7a634f4f.png" width="500"/>
+	<img src="/_resources/acc2f4393391112f4e2335964de58d81.png" width="500"/>
 
 ## Five-state model:
-<img src="_resources/6e49541faafe50079acd653902e4d938.png" width="600"/>
+<img src="/_resources/6e49541faafe50079acd653902e4d938.png" width="600"/>
 
 - **New**: Created but not ready to execute
 - **Ready**: Can execute when scheduled by the OS
@@ -891,7 +891,7 @@ Analysis and optimisation of processes waiting to be executed
 	- **Blocked $\to$ Exit**: As above
 
 ## Seven-state model:
-<img src="_resources/67e3dcbcd78cf7aa2caade6795dae3cf.png" width="600"/>
+<img src="/_resources/67e3dcbcd78cf7aa2caade6795dae3cf.png" width="600"/>
 
 - A more detailed representation of process behaviour, including specific conditions and events for transitions between states
 - Introduces additional process state transitions:
@@ -924,7 +924,7 @@ Deciding which task to assign to a resource at a given time, such as...
 	- **Medium-term**: Suspend, Unsuspend
 	- **Short-term**: Ready $\to$ Running
 
-<img src="_resources/9ab4b87d40528e3f88299fa13362c5d1.png" width="600"/>
+<img src="/_resources/9ab4b87d40528e3f88299fa13362c5d1.png" width="600"/>
 
 ## Long-term Scheduling
 - Involves admitting processes to the ready queue
@@ -1121,7 +1121,7 @@ $s=$ Expected service time
 	- Local variable storage (architecture dependent)
 
 ## Thread Events
-<img src="_resources/61eabf24e00404eb8824ae38877e25c6.png" width="400"/>
+<img src="/_resources/61eabf24e00404eb8824ae38877e25c6.png" width="400"/>
 
 Manages execution and synchronisation of threads in a multi-threaded environment:
 - **Spawn**: Creation by another thread
@@ -1130,7 +1130,7 @@ Manages execution and synchronisation of threads in a multi-threaded environment
 - **Finish**: Termination
 
 # Types of Threads
-<img src="_resources/1335c5afc122f858b2fdfab52c572a80.png" width="250"/>
+<img src="/_resources/1335c5afc122f858b2fdfab52c572a80.png" width="250"/>
 
 ## User-level Threads (ULT)
 - Managed by the application without kernel support
@@ -1148,7 +1148,7 @@ Manages execution and synchronisation of threads in a multi-threaded environment
 	- Interprocess multiprocessing not possible
 
 ## Kernel-level Threads (KLT)
-<img src="_resources/d6c1398c382b17736c60fb25076d08fe.png" width="250"/>
+<img src="/_resources/d6c1398c382b17736c60fb25076d08fe.png" width="250"/>
 
 - Managed by the kernel (i.e., the OS)
 - Processes create threads via API (`pthreads`)
@@ -1161,7 +1161,7 @@ Manages execution and synchronisation of threads in a multi-threaded environment
 	- Thread switch requires a mode switch
 
 ## Hybrid Threading
-<img src="_resources/536be26b96b23c53912b966f07912f95.png" width="250"/>
+<img src="/_resources/536be26b96b23c53912b966f07912f95.png" width="250"/>
 
 - Combines *ULT* and *KLT*
 	- ULTs mapped to (one or more) KLTs for multiprocessing
@@ -1188,7 +1188,7 @@ Manages execution and synchronisation of threads in a multi-threaded environment
 - Mechanisms can be combined
 
 ## Segmentation
-<img src="_resources/01077e0cc4c8cbe65448898de14e0796-1.png" width="350"/>
+<img src="/_resources/01077e0cc4c8cbe65448898de14e0796-1.png" width="350"/>
 
 - Divide process into unequal size *segments* with different values for *base*, *length*, and *protection*
 - Programmer must be aware of maximum segment size
@@ -1203,15 +1203,15 @@ Manages execution and synchronisation of threads in a multi-threaded environment
 	- FS, GS still work
 
 ## Paging
-<img src="_resources/9dea76d79704e26f48c7011eb418d0b4-1.png" width="350"/>
+<img src="/_resources/9dea76d79704e26f48c7011eb418d0b4-1.png" width="350"/>
 
 - Partition **virtual memory** into fixed-size pages and...
 - ...**physical memory** into *frames* of the same size
 - Don't need to be stored in contiguous frames
 
 ## Important Differences
-<img src="_resources/ac2707217e9a9913123a4c5aa1c979a2-1.png" width="350"/>
-<img src="_resources/a4eee01b688aa336ce404f84e9bcaa5a-1.png" width="350"/>
+<img src="/_resources/ac2707217e9a9913123a4c5aa1c979a2-1.png" width="350"/>
+<img src="/_resources/a4eee01b688aa336ce404f84e9bcaa5a-1.png" width="350"/>
 
 **Segmentation VS Paging**
 - **Size**:
@@ -1229,7 +1229,7 @@ Manages execution and synchronisation of threads in a multi-threaded environment
 - Variations of pages used in different OS' to optimise memory management
 
 # 32b Intel Page Table Entry
-<img src="_resources/d0da8c0174fbce63fb5eb75fe9ef91fd.png" width="550"/>
+<img src="/_resources/d0da8c0174fbce63fb5eb75fe9ef91fd.png" width="550"/>
 
 | Bit | Name | Meaning                           |
 |-----|------|-----------------------------------|
@@ -1239,7 +1239,7 @@ Manages execution and synchronisation of threads in a multi-threaded environment
 | 6   | D    | Dirty: page modified recently     |
 
 # 64b Intel Page Table Entry:
-<img src="_resources/1b8c5d02c585427d22a458bc5053f783.png" width="550"/>
+<img src="/_resources/1b8c5d02c585427d22a458bc5053f783.png" width="550"/>
 
 - Supports bigger virtual address
 	- **40b or 48b**: no need for > 256 TiB right now
@@ -1258,7 +1258,7 @@ Manages execution and synchronisation of threads in a multi-threaded environment
 	- i.e., 4 petapages
 
 # Page Tables in Practice:
-<img src="_resources/92f66a2555a71949b9d08792c3ee841a.png" width="450"/>
+<img src="/_resources/92f66a2555a71949b9d08792c3ee841a.png" width="450"/>
 
 - In practice, real page tables are not monolithic but structured as multi-level page tables
 - Multi-level page tables create trees of pages
@@ -1299,14 +1299,14 @@ Manages execution and synchronisation of threads in a multi-threaded environment
 
 
 ## TLB Miss
-<img src="_resources/13e34ff7785a874ae2a93286f74ac3b4.png" width="250"/>
+<img src="/_resources/13e34ff7785a874ae2a93286f74ac3b4.png" width="250"/>
 
 - Happens when TLB does not contain the required translation for virtual-to-physical address mapping
 - When a TLB miss happens, hardware page-table walker or OS must retrieve the translation from the page table
 - If no entry in the TLB or the page table, **Page fault**
 
 ## Page Fault
-<img src="_resources/5e8c3c909bff2340daa9e6ed350e2164.png" width="450"/>
+<img src="/_resources/5e8c3c909bff2340daa9e6ed350e2164.png" width="450"/>
 
 - Page fault handler triggered to handle the above situation by...
 	- Populating memory
@@ -1411,7 +1411,7 @@ Manages execution and synchronisation of threads in a multi-threaded environment
 		- **Authorisation**: Who can do what? How is it decided?
 
 # Filesystem
-<img src="_resources/2fd8cefdf1ab4751988b024adbe9f336.png" width="400"/>
+<img src="/_resources/2fd8cefdf1ab4751988b024adbe9f336.png" width="400"/>
 
 - Method used by OS to organise and store data
 - **High-level Goal**: Store files and directories in *blocks*
@@ -1575,7 +1575,7 @@ chown: foo.txt: Operation not permitted
 - often via `sudo(8)`
 	- `sudo` stands for **S**uper **U**ser **DO**
 
-<img src="_resources/17184eea0fc022b92f076d4bb0c84b42.png" width="200"/>
+<img src="/_resources/17184eea0fc022b92f076d4bb0c84b42.png" width="200"/>
 
 - Some programs require `root` privilege to run
 - Others must be executable by any user
@@ -1588,7 +1588,7 @@ chown: foo.txt: Operation not permitted
 - Used for complex authorization on multi-user shared systems
 - Implemented in NFSv4, POSIX 1e, Windows/SMB, etc.
 
-<img src="_resources/12d27338eddba1904460711b2a00f01c.png" width="300"/>
+<img src="/_resources/12d27338eddba1904460711b2a00f01c.png" width="300"/>
 
 # MAC: Mandatory Access Control
 - **Organizing principle**:
@@ -1622,7 +1622,7 @@ chown: foo.txt: Operation not permitted
 - Still prevalent in various systems like camera file systems
 
 # File Allocation Table (FAT) Filesystem
-<img src="_resources/b3977457fe25e18483fbf053a4cd43fa.png" width="500"/>
+<img src="/_resources/b3977457fe25e18483fbf053a4cd43fa.png" width="500"/>
 
 - Introduced in 1977, still relevant in 2018
 - Uses linked lists for block allocation
@@ -1632,7 +1632,7 @@ chown: foo.txt: Operation not permitted
 	- But, it does make it suitable for single-user computers like digital cameras or USB sticks
 
 # Block Structures
-<img src="_resources/316253a92e80b779d295bb48a137187f.png" width="350"/>
+<img src="/_resources/316253a92e80b779d295bb48a137187f.png" width="350"/>
 
 - Utilizes trees of "indirect" blocks
 - Includes directory entries with details like...
@@ -1643,21 +1643,21 @@ chown: foo.txt: Operation not permitted
 - Resembles a mix of inodes and directory entries
 
 # Linked Lists of Blocks:
-<img src="_resources/93183d2776c5177f4df3a09ed5b8653d.png" width="400"/>
+<img src="/_resources/93183d2776c5177f4df3a09ed5b8653d.png" width="400"/>
 
 - Simple concept, simple implementation
 - Enables arbitrary-length files but lacks random access
 
 ## Some problems:
 - **Assume list of blocks**:
-	- <img src="_resources/71db57702354fc5ca0d65a876d4c6274.png" width="200"/>
+	- <img src="/_resources/71db57702354fc5ca0d65a876d4c6274.png" width="200"/>
 	- Accessing third block of file (cluster 6) requires iteration
 - **Related question**:
-	- <img src="_resources/f483f4cc5e65d16092d213f760557a63.png" width="300"/>
+	- <img src="/_resources/f483f4cc5e65d16092d213f760557a63.png" width="300"/>
 	- Where to store the pointers?
 
 ## File Allocation Table
-<img src="_resources/cfc00c0444f38083a1750ceb2d90b81e.png" width="300"/>
+<img src="/_resources/cfc00c0444f38083a1750ceb2d90b81e.png" width="300"/>
 
 - *Neat solution to both problems*:
 	- FAT stores "next" pointer for each cluster
@@ -1821,7 +1821,7 @@ while STATUS == BUSY:    # wait until device is done with your request
 		- Reduces bus contention as only DMA and CPU are involved in data transfer (*Efficiency*)
 
 ## Discrete bus-connected DMA
-<img src="_resources/b479f45a8fdb5bb26a81c8bcea7fcc04.png" width="400"/>
+<img src="/_resources/b479f45a8fdb5bb26a81c8bcea7fcc04.png" width="400"/>
 
 - Acts as an independent coprocesseor
 	- like the Intel 8237 in IBM XT
@@ -1838,8 +1838,8 @@ while STATUS == BUSY:    # wait until device is done with your request
 	- Features discrete memory, timer, I/O chips, etc.
 
 ## Northbridge/Southbridge
-<img src="_resources/27d8f95be14cd0b192335d0cafdfefbf.png" width="250"/>
-<img src="_resources/e93df916d3b904481af9902c98a84743.png" width="350"/>
+<img src="/_resources/27d8f95be14cd0b192335d0cafdfefbf.png" width="250"/>
+<img src="/_resources/e93df916d3b904481af9902c98a84743.png" width="350"/>
 
 - CPU talks to Northbridge via *front-side bus*
 	- For fast I/O operations like memory and graphics
@@ -1858,7 +1858,7 @@ while STATUS == BUSY:    # wait until device is done with your request
 	- This lead to the development of **On-die Graphics and Memory**
 
 ## On-die Graphics and Memory
-<img src="_resources/13bf55f1bd206527684adba1570ca2f6.png" width="250"/>
+<img src="/_resources/13bf55f1bd206527684adba1570ca2f6.png" width="250"/>
 
 - CPUs now include on-die memory and graphics components for faster processing
 - Remaining resources are directed to Intel *Platform Controller Hub* or AMD *Fusion Controller Hub*
@@ -2065,7 +2065,7 @@ while STATUS == BUSY:    # wait until device is done with your request
 	- Aims to maximise task completion while maintaining flexibility in handling missed deadlines
 
 # Aperiodic Scheduling
-<img src="_resources/0715d6ab3e19fd15be1b93ee38a3effe.png" width="500"/>
+<img src="/_resources/0715d6ab3e19fd15be1b93ee38a3effe.png" width="500"/>
 ![0715d6ab3e19fd15be1b93ee38a3effe.png](:/)
 
 Tasks arrive aperiodically and having starting deadlines

@@ -31,7 +31,7 @@ while STATUS == BUSY:    # wait until device is done with your request
 		- Reduces bus contention as only DMA and CPU are involved in data transfer (*Efficiency*)
 
 ## Discrete bus-connected DMA
-<img src="../../../_resources/b479f45a8fdb5bb26a81c8bcea7fcc04.png" width="400"/>
+<img src="../../..//_resources/b479f45a8fdb5bb26a81c8bcea7fcc04.png" width="400"/>
 
 - Acts as an independent coprocesseor
 	- like the Intel 8237 in IBM XT
@@ -48,8 +48,8 @@ while STATUS == BUSY:    # wait until device is done with your request
 	- Features discrete memory, timer, I/O chips, etc.
 
 ## Northbridge/Southbridge
-<img src="../../../_resources/27d8f95be14cd0b192335d0cafdfefbf.png" width="250"/>
-<img src="../../../_resources/e93df916d3b904481af9902c98a84743.png" width="350"/>
+<img src="/_resources/27d8f95be14cd0b192335d0cafdfefbf.png" width="250"/>
+<img src="/_resources/e93df916d3b904481af9902c98a84743.png" width="350"/>
 
 - CPU talks to Northbridge via *front-side bus*
 	- For fast I/O operations like memory and graphics

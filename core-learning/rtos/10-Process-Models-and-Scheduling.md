@@ -27,7 +27,7 @@
 - Serves as a data structure that holds all necessary details for the OS to manage and control the process effectively
 
 ## Process Creation
-<img src="_resources/6780fd782ca70a1ba087bd8689c323cf.png" width="200"/>
+<img src="/_resources/6780fd782ca70a1ba087bd8689c323cf.png" width="200"/>
 
 1. Building the PCB to store process information
 2. Allocate memory for the process to execute
@@ -44,7 +44,7 @@
 - i.e., allows OS to efficiently manage multiple processes by switching between them to utilise system resources effectively
 
 ## Process Termination
-<img src="_resources/1ae4bdc2bd35f373701bd55b4de0f82f.png" width="200"/>
+<img src="/_resources/1ae4bdc2bd35f373701bd55b4de0f82f.png" width="200"/>
 
 Occurs when a process exits due to reasons such as:
 - Calling `exit(2)` function
@@ -53,7 +53,7 @@ Occurs when a process exits due to reasons such as:
 - Exceeding resource limits
 
 ## Queueing Model
-<img src="_resources/cc4aa6da91db1ebcb87a7ec05a867574.png" width="400"/>
+<img src="/_resources/cc4aa6da91db1ebcb87a7ec05a867574.png" width="400"/>
 
 Analysis and optimisation of processes waiting to be executed
 
@@ -65,11 +65,11 @@ Analysis and optimisation of processes waiting to be executed
 	- Running
 	- Exit
 - In this model, a process is either actively running, or has been terminated.
-	<img src="_resources/e95c1c216baee8f65191d24d7a634f4f.png" width="500"/>
-	<img src="_resources/acc2f4393391112f4e2335964de58d81.png" width="500"/>
+	<img src="/_resources/e95c1c216baee8f65191d24d7a634f4f.png" width="500"/>
+	<img src="/_resources/acc2f4393391112f4e2335964de58d81.png" width="500"/>
 
 ## Five-state model:
-<img src="_resources/6e49541faafe50079acd653902e4d938.png" width="600"/>
+<img src="/_resources/6e49541faafe50079acd653902e4d938.png" width="600"/>
 
 - **New**: Created but not ready to execute
 - **Ready**: Can execute when scheduled by the OS
@@ -93,7 +93,7 @@ Analysis and optimisation of processes waiting to be executed
 	- **Blocked $\to$ Exit**: As above
 
 ## Seven-state model:
-<img src="_resources/67e3dcbcd78cf7aa2caade6795dae3cf.png" width="600"/>
+<img src="/_resources/67e3dcbcd78cf7aa2caade6795dae3cf.png" width="600"/>
 
 - A more detailed representation of process behaviour, including specific conditions and events for transitions between states
 - Introduces additional process state transitions:

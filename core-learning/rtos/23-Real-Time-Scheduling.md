@@ -83,7 +83,7 @@
 	- Aims to maximise task completion while maintaining flexibility in handling missed deadlines
 
 # Aperiodic Scheduling
-<img src="_resources/0715d6ab3e19fd15be1b93ee38a3effe.png" width="500"/>
+<img src="/_resources/0715d6ab3e19fd15be1b93ee38a3effe.png" width="500"/>
 ![0715d6ab3e19fd15be1b93ee38a3effe.png](:/)
 
 Tasks arrive aperiodically and having starting deadlines
