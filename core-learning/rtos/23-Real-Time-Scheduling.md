@@ -83,8 +83,7 @@
 	- Aims to maximise task completion while maintaining flexibility in handling missed deadlines
 
 # Aperiodic Scheduling
-<img src="/_resources/0715d6ab3e19fd15be1b93ee38a3effe.png" width="500"/>
-![0715d6ab3e19fd15be1b93ee38a3effe.png](:/)
+![aperiodic_scheduling.png](images/aperiodic_scheduling.png){width=500px}
 
 Tasks arrive aperiodically and having starting deadlines
 - **Earliest Deadline Met**:

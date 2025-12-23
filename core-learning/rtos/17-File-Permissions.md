@@ -70,7 +70,7 @@ chown: foo.txt: Operation not permitted
 - often via `sudo(8)`
 	- `sudo` stands for **S**uper **U**ser **DO**
 
-<img src="/_resources/17184eea0fc022b92f076d4bb0c84b42.png" width="200"/>
+![comic.png](images/comic.png){width=200px}
 
 - Some programs require `root` privilege to run
 - Others must be executable by any user
@@ -83,7 +83,7 @@ chown: foo.txt: Operation not permitted
 - Used for complex authorization on multi-user shared systems
 - Implemented in NFSv4, POSIX 1e, Windows/SMB, etc.
 
-<img src="/_resources/12d27338eddba1904460711b2a00f01c.png" width="300"/>
+![acl.png](images/acl.png){width=300px}
 
 # MAC: Mandatory Access Control
 - **Organizing principle**:

@@ -7,3 +7,6 @@ I compiled my notes in Joplin. Joplin is great, don't get me wrong--but I also w
 Hopefully as I build this up, people can also take advantage of it as a silly (but free!) learning or review source. It's certainly meant for my notetaking and review!
 
 The notes here are meant to be refined and compiled after I write things down to understand concepts well enough. i.e., No room for half-baked or unseasoned content (hopefully)!
+
+- SSG: [VitePress](https://vitepress.dev/)
+- Theme: [Catpuccin](https://vitepress.catppuccin.com/)

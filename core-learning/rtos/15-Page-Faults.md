@@ -13,14 +13,14 @@
 
 
 ## TLB Miss
-<img src="/_resources/13e34ff7785a874ae2a93286f74ac3b4.png" width="250"/>
+![tlb_miss.png](images/tlb_miss.png){width=250px}
 
 - Happens when TLB does not contain the required translation for virtual-to-physical address mapping
 - When a TLB miss happens, hardware page-table walker or OS must retrieve the translation from the page table
 - If no entry in the TLB or the page table, **Page fault**
 
 ## Page Fault
-<img src="/_resources/5e8c3c909bff2340daa9e6ed350e2164.png" width="450"/>
+![page_fault.png](images/page_fault.png){width=450px}
 
 - Page fault handler triggered to handle the above situation by...
 	- Populating memory

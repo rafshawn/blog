@@ -9,7 +9,7 @@
 		- **Authorisation**: Who can do what? How is it decided?
 
 # Filesystem
-<img src="/_resources/2fd8cefdf1ab4751988b024adbe9f336.png" width="400"/>
+![filesystem.png](images/filesystem.png){width=400px}
 
 - Method used by OS to organise and store data
 - **High-level Goal**: Store files and directories in *blocks*

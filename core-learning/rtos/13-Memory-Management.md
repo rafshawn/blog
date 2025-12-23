@@ -16,7 +16,7 @@
 - Mechanisms can be combined
 
 ## Segmentation
-<img src="/_resources/01077e0cc4c8cbe65448898de14e0796-1.png" width="350"/>
+![segmentation.png](images/segmentation.png){width=350px}
 
 - Divide process into unequal size *segments* with different values for *base*, *length*, and *protection*
 - Programmer must be aware of maximum segment size
@@ -31,15 +31,15 @@
 	- FS, GS still work
 
 ## Paging
-<img src="/_resources/9dea76d79704e26f48c7011eb418d0b4-1.png" width="350"/>
+![paging.png](images/paging.png){width=350px}
 
 - Partition **virtual memory** into fixed-size pages and...
 - ...**physical memory** into *frames* of the same size
 - Don't need to be stored in contiguous frames
 
 ## Important Differences
-<img src="/_resources/ac2707217e9a9913123a4c5aa1c979a2-1.png" width="350"/>
-<img src="/_resources/a4eee01b688aa336ce404f84e9bcaa5a-1.png" width="350"/>
+![seg_v_paging-01.png](images/seg_v_paging-01.png){width=350px}
+![seg_v_paging-02.png](images/seg_v_paging-02.png){width=350px}
 
 **Segmentation VS Paging**
 - **Size**:

@@ -5,7 +5,7 @@
 - Variations of pages used in different OS' to optimise memory management
 
 # 32b Intel Page Table Entry
-<img src="/_resources/d0da8c0174fbce63fb5eb75fe9ef91fd.png" width="550"/>
+![32b_table.png](images/32b_table.png){width=550px}
 
 | Bit | Name | Meaning                           |
 |-----|------|-----------------------------------|
@@ -15,7 +15,7 @@
 | 6   | D    | Dirty: page modified recently     |
 
 # 64b Intel Page Table Entry:
-<img src="/_resources/1b8c5d02c585427d22a458bc5053f783.png" width="550"/>
+![64b_table.png](images/64b_table.png){width=550px}
 
 - Supports bigger virtual address
 	- **40b or 48b**: no need for > 256 TiB right now
@@ -34,7 +34,7 @@
 	- i.e., 4 petapages
 
 # Page Tables in Practice:
-<img src="/_resources/92f66a2555a71949b9d08792c3ee841a.png" width="450"/>
+![page_tables.png](images/page_tables.png){width=450px}
 
 - In practice, real page tables are not monolithic but structured as multi-level page tables
 - Multi-level page tables create trees of pages

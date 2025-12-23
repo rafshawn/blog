@@ -4,7 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "Braindump",
   description: "My learning shit",
-  srcDir: "/src",
+  srcDir: "",
   markdown: {
     theme: {
       light: 'catppuccin-latte',

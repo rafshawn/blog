@@ -31,7 +31,7 @@ while STATUS == BUSY:    # wait until device is done with your request
 		- Reduces bus contention as only DMA and CPU are involved in data transfer (*Efficiency*)
 
 ## Discrete bus-connected DMA
-<img src="../../..//_resources/b479f45a8fdb5bb26a81c8bcea7fcc04.png" width="400"/>
+![dma.png](images/dma.png){width=400px}
 
 - Acts as an independent coprocesseor
 	- like the Intel 8237 in IBM XT
@@ -48,8 +48,8 @@ while STATUS == BUSY:    # wait until device is done with your request
 	- Features discrete memory, timer, I/O chips, etc.
 
 ## Northbridge/Southbridge
-<img src="/_resources/27d8f95be14cd0b192335d0cafdfefbf.png" width="250"/>
-<img src="/_resources/e93df916d3b904481af9902c98a84743.png" width="350"/>
+![nb_sb-01.png](images/nb_sb-01.png){width=250px}
+![nb_sb-02.png](images/nb_sb-02.png){width=350px}
 
 - CPU talks to Northbridge via *front-side bus*
 	- For fast I/O operations like memory and graphics
@@ -68,7 +68,7 @@ while STATUS == BUSY:    # wait until device is done with your request
 	- This lead to the development of **On-die Graphics and Memory**
 
 ## On-die Graphics and Memory
-<img src="../../../_resources/13bf55f1bd206527684adba1570ca2f6.png" width="250"/>
+![od_gm.png](images/od_gm.png){width=250px}
 
 - CPUs now include on-die memory and graphics components for faster processing
 - Remaining resources are directed to Intel *Platform Controller Hub* or AMD *Fusion Controller Hub*
@@ -130,7 +130,7 @@ while STATUS == BUSY:    # wait until device is done with your request
 ### Configuring Non-x86 Hardware
 - **Finding Hardware**: Locate hardware by compiling addresses into kernel/bootloader or loading a compiled device tree representation
 
-***History of Buses **:
+**History of Buses**:
 - **x86**: ISA, PCI, AGP, PCIE, USB, FireWire, etc.
 
 # Device Drivers
