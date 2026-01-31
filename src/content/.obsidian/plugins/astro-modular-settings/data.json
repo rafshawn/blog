@@ -1,9 +1,9 @@
 {
   "runWizardOnStartup": true,
   "currentTemplate": "standard",
-  "currentTheme": "oxygen",
+  "currentTheme": "solarized",
   "customThemeFile": "custom",
-  "contentOrganization": "file-based",
+  "contentOrganization": "folder-based",
   "themeColors": {
     "mode": "simple",
     "simpleColors": {
@@ -12,10 +12,10 @@
     }
   },
   "siteInfo": {
-    "site": "https://astro-modular.netlify.app",
-    "title": "Astro Modular",
-    "description": "A flexible blog theme designed for Obsidian users.",
-    "author": "David V. Kimball",
+    "site": "https://rafshawn.github.io",
+    "title": "Braindump",
+    "description": "My personal knowledge bank",
+    "author": "Shawn Adrian",
     "language": "en",
     "faviconThemeAdaptive": true,
     "defaultOgImageAlt": "Astro Modular logo."
@@ -54,17 +54,7 @@
       },
       {
         "title": "About",
-        "url": "/about/",
-        "children": [
-          {
-            "title": "Privacy Policy",
-            "url": "/privacy-policy/"
-          }
-        ]
-      },
-      {
-        "title": "GitHub",
-        "url": "https://github.com/davidvkimball/astro-modular"
+        "url": "/about/"
       }
     ],
     "social": [
@@ -226,7 +216,7 @@
     }
   },
   "deployment": {
-    "platform": "netlify"
+    "platform": "github-pages"
   },
   "pluginConfig": {
     "obsidianSettings": {
