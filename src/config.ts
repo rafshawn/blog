@@ -14,6 +14,7 @@ export type AspectRatio =
 export interface SiteConfig {
   // Site Information
   site: string;
+  base: string;
   title: string;
   description: string;
   author: string;
@@ -182,6 +183,7 @@ export const siteConfig: SiteConfig = {
   // Site Information
   // [CONFIG:SITE_URL]
   site: "https://rafshawn.github.io/braindump",
+  base: "/braindump",
   // [CONFIG:SITE_TITLE]
   title: "Braindump",
   // [CONFIG:SITE_DESCRIPTION]
