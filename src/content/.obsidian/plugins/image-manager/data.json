@@ -14,7 +14,7 @@
   "defaultImageSize": "large",
   "enablePropertyPaste": true,
   "propertyLinkFormat": "custom",
-  "customPropertyLinkFormat": "[[attachments/{image-url}]]",
+  "customPropertyLinkFormat": "[[{image-url}]]",
   "defaultPropertyName": "image",
   "defaultIconPropertyName": "icon",
   "autoConvertRemoteImages": false,
