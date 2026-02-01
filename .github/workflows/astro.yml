@@ -33,33 +33,16 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repo
         uses: actions/checkout@v5
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9 # Not needed if you've set "packageManager" in package.json
-      - name: Setup Node
-        uses: actions/setup-node@v6
-        with:
-          node-version: "24"
-          cache: pnpm
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v5
-      - name: Install dependencies
-        run: pnpm install
-        working-directory: ${{ env.BUILD_PATH }}
-      - name: Build with Astro
-        run: pnpm astro build \
-          --site "${{ steps.pages.outputs.origin }}" \
-          --base "${{ steps.pages.outputs.base_path }}"
-        working-directory: ${{ env.BUILD_PATH }}
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ${{ env.BUILD_PATH }}/dist
 
+      - name: Install, build, and upload site
+        uses: withastro/action@v5
+        with:
+          path: ${{ env.BUILD_PATH }}
+          node-version: 22
+          package-manager: pnpm@latest
+          build-cmd: pnpm run build
   deploy:
     environment:
       name: github-pages
