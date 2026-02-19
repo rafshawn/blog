@@ -2,7 +2,7 @@
   "enableRenameOnPaste": true,
   "enableRenameOnDrop": true,
   "imageNameTemplate": "{{fileName}}",
-  "attachmentLocation": "obsidian",
+  "attachmentLocation": "subfolder",
   "customAttachmentPath": "./assets",
   "defaultProvider": "unsplash",
   "unsplashProxyServer": "",

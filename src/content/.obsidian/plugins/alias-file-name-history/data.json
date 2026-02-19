@@ -11,13 +11,15 @@
     "posts",
     "pages",
     "projects",
-    "docs"
+    "docs",
+    "bank"
   ],
   "excludeFolders": [],
   "fileExtensions": [
     "md"
   ],
   "trackFolderRenames": "index",
+  "excludePropertyName": "",
   "propertyName": "",
   "propertyValue": true,
   "propertyExcludes": false

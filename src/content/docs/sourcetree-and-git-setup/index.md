@@ -16,6 +16,7 @@ aliases:
 ---
 This comprehensive guide will walk you through setting up SourceTree and Git for your Astro Modular blog, enabling seamless version control and deployment workflows.
 
+![sourcetree_test](assets/sourcetree.png)
 ## Prerequisites
 
 Before starting, ensure you have:

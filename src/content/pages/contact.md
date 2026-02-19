@@ -6,7 +6,6 @@ hideTOC: false
 draft: false
 aliases:
   - contact-me
-  - contact-us
 ---
 Send me a message. 
 

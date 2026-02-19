@@ -162,7 +162,7 @@ export function optimizePageImagePath(imagePath: string): string {
 
   // Default - assume it's a relative path in the pages directory
   const finalPath = `/pages/attachments/${cleanPath}`;
-  
+
   // Convert to WebP if applicable (sync-images.js creates WebP versions)
   return getOptimizedFormat(finalPath);
 }
@@ -227,12 +227,12 @@ export function optimizePostImagePath(
   if (postId && postSlug) {
     // Remove leading "./" if present
     let imageName = cleanPath.startsWith("./") ? cleanPath.slice(2) : cleanPath;
-    
+
     // Strip 'images/' or 'attachments/' prefixes if present (sync script removes them)
     if (imageName.startsWith("images/") || imageName.startsWith("attachments/")) {
       imageName = imageName.replace(/^(images|attachments)\//, "");
     }
-    
+
     // For folder-based posts, images are in /posts/{postId}/
     const folderPath = `/posts/${postSlug}/${imageName}`;
     // Convert to WebP if applicable (sync-images.js creates WebP versions)
@@ -248,7 +248,7 @@ export function optimizePostImagePath(
 
   // Default - assume it's a relative path in the posts directory
   const finalPath = `/posts/attachments/${cleanPath}`;
-  
+
   // Convert to WebP if applicable (sync-images.js creates WebP versions)
   return getOptimizedFormat(finalPath);
 }
@@ -304,12 +304,12 @@ export function optimizeContentImagePath(
   // Folder-based content - sync script copies images to content folder root
   // Remove leading "./" if present
   let imageName = cleanPath.startsWith("./") ? cleanPath.slice(2) : cleanPath;
-  
+
   // Strip 'images/' or 'attachments/' prefixes if present (sync script removes them)
   if (imageName.startsWith("images/") || imageName.startsWith("attachments/")) {
     imageName = imageName.replace(/^(images|attachments)\//, "");
   }
-  
+
   // For folder-based content, images are in /{urlPath}/{contentSlug}/
   if (contentId && contentSlug) {
     const folderPath = `/${urlPath}/${contentSlug}/${imageName}`;
@@ -438,8 +438,8 @@ export function getMimeTypeFromPath(imagePath: string): string {
 // Converts image paths to WebP format (sync-images.js creates WebP versions)
 export function getOptimizedFormat(imagePath: string): string {
   // Don't convert external URLs, SVG, or already WebP files
-  if (!imagePath || 
-      imagePath.startsWith("http") || 
+  if (!imagePath ||
+      imagePath.startsWith("http") ||
       imagePath.toLowerCase().endsWith(".svg") ||
       imagePath.toLowerCase().endsWith(".webp")) {
     return imagePath;

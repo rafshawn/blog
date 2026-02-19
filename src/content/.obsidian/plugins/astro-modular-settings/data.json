@@ -1,7 +1,7 @@
 {
-  "runWizardOnStartup": true,
+  "runWizardOnStartup": false,
   "currentTemplate": "standard",
-  "currentTheme": "rose-pine",
+  "currentTheme": "dracula",
   "customThemeFile": "custom",
   "contentOrganization": "folder-based",
   "themeColors": {
@@ -12,9 +12,9 @@
     }
   },
   "siteInfo": {
-    "site": "https://rafshawn.github.io/braindump",
-    "title": "Braindump",
-    "description": "My personal knowledge bank",
+    "site": "https://shawn.onl/",
+    "title": "Shawn.onl",
+    "description": "My personal blog",
     "author": "Shawn Adrian",
     "language": "en",
     "faviconThemeAdaptive": true,
@@ -29,7 +29,7 @@
   },
   "footer": {
     "enabled": true,
-    "content": "© 2025 {author}. Built with the <a href=\"https://github.com/davidvkimball/astro-modular\" target=\"_blank\">Astro Modular</a> theme.",
+    "content": "© 2026 {author}. Built with <a href=\"https://github.com/davidvkimball/astro-modular\" target=\"_blank\">Astro Modular</a>.",
     "showSocialIconsInFooter": true
   },
   "seo": {
@@ -54,11 +54,13 @@
       },
       {
         "title": "About",
-        "url": "/about/"
-      },
-      {
-        "title": "New Page",
-        "url": "/braindump"
+        "url": "/about/",
+        "children": [
+          {
+            "title": "My Resume",
+            "url": "/resume"
+          }
+        ]
       }
     ],
     "social": [
@@ -111,7 +113,7 @@
       "count": 2
     },
     "docs": {
-      "enabled": true,
+      "enabled": false,
       "count": 3
     },
     "blurb": {
@@ -135,7 +137,7 @@
     },
     "postNavigation": true,
     "showPostCardCoverImages": "featured-and-posts",
-    "postCardAspectRatio": "og",
+    "postCardAspectRatio": "16:9",
     "customPostCardAspectRatio": "2.5/1",
     "comments": {
       "enabled": false,
@@ -169,7 +171,7 @@
     "comments": false,
     "featureButton": "mode",
     "showPostCardCoverImages": "featured-and-posts",
-    "postCardAspectRatio": "og",
+    "postCardAspectRatio": "16:9",
     "customPostCardAspectRatio": "2.5/1",
     "quickActions": {
       "enabled": true,

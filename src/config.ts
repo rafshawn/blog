@@ -199,7 +199,7 @@ export const siteConfig: SiteConfig = {
 
   // Global Settings
   // [CONFIG:THEME]
-  theme: "rose-pine", // Available themes: "minimal" | "oxygen" | "atom" | "ayu" | "catppuccin" | "charcoal" | "dracula" | "everforest" | "flexoki" | "gruvbox" | "macos" | "nord" | "obsidian" | "rose-pine" | "sky" | "solarized" | "things" | "custom"
+  theme: "dracula", // Available themes: "minimal" | "oxygen" | "atom" | "ayu" | "catppuccin" | "charcoal" | "dracula" | "everforest" | "flexoki" | "gruvbox" | "macos" | "nord" | "obsidian" | "rose-pine" | "sky" | "solarized" | "things" | "custom"
   // [CONFIG:CUSTOM_THEME_FILE]
   customThemeFile: "custom", // Only used if theme is set to "custom" above. Filename in src/themes/custom/ (without .ts extension)
   // [CONFIG:AVAILABLE_THEMES]
@@ -232,7 +232,7 @@ export const siteConfig: SiteConfig = {
     // [CONFIG:FOOTER_ENABLED]
     enabled: true,
     // [CONFIG:FOOTER_CONTENT]
-    content: `© 2025 {author}. Built with the <a href="https://github.com/davidvkimball/astro-modular" target="_blank">Astro Modular</a> theme.`,
+    content: `© 2026 {author}. Built with <a href="https://github.com/davidvkimball/astro-modular" target="_blank">Astro Modular</a>.`,
     // [CONFIG:FOOTER_SHOW_SOCIAL_ICONS]
     showSocialIconsInFooter: true,
   },
@@ -316,8 +316,10 @@ export const siteConfig: SiteConfig = {
       { title: "Posts", url: "/posts/" },
       { title: "Projects", url: "/projects/" },
       { title: "Docs", url: "/docs/" },
-      { title: "About", url: "/about/" },
-      { title: "New Page", url: "/braindump" }
+      { title: "About", url: "/about/",
+        children: [
+          { title: "My Resume", url: "/resume" }
+        ] }
     ],
     // [CONFIG:NAVIGATION_SOCIAL]
     social: [
@@ -366,7 +368,7 @@ export const siteConfig: SiteConfig = {
     },
     docs: {
       // [CONFIG:HOME_OPTIONS_DOCS_ENABLED]
-      enabled: true, // Show featured docs on homepage
+      enabled: false, // Show featured docs on homepage
       // [CONFIG:HOME_OPTIONS_DOCS_COUNT]
       count: 3, // Number of docs to show
     },
@@ -407,7 +409,7 @@ export const siteConfig: SiteConfig = {
     // [CONFIG:POST_OPTIONS_SHOW_POST_CARD_COVER_IMAGES]
     showPostCardCoverImages: "featured-and-posts", // "all" | "featured" | "home" | "posts" | "featured-and-posts" | "none"
     // [CONFIG:POST_OPTIONS_POST_CARD_ASPECT_RATIO]
-    postCardAspectRatio: "og", // "16:9" | "4:3" | "3:2" | "og" | "square" | "golden" | "custom"
+    postCardAspectRatio: "16:9", // "16:9" | "4:3" | "3:2" | "og" | "square" | "golden" | "custom"
     // [CONFIG:POST_OPTIONS_CUSTOM_POST_CARD_ASPECT_RATIO]
     customPostCardAspectRatio: "2.5/1", // Only used when postCardAspectRatio is "custom" (e.g., "2.5/1")
     comments: {

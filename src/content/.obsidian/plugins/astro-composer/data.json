@@ -21,10 +21,10 @@
       "linkBasePath": "/posts/",
       "template": "---\ntitle: \"{{title}}\"\ndate: {{date}}\ndescription: \"\"\ntags: []\nimage: \"\"\nimageAlt: \"\"\nimageOG: false\nhideCoverImage: false\nhideTOC: false\ntargetKeyword: \"\"\ndraft: false\n---\n",
       "enabled": true,
-      "creationMode": "file",
+      "creationMode": "folder",
       "indexFileName": "index",
       "ignoreSubfolders": false,
-      "enableUnderscorePrefix": false
+      "enableUnderscorePrefix": true
     },
     {
       "id": "pages-1765432337485",
@@ -33,10 +33,10 @@
       "linkBasePath": "/",
       "template": "---\ntitle: \"{{title}}\"\ndescription: \"\"\nnoIndex: false\nhideTOC: false\ndraft: false\n---\n",
       "enabled": true,
-      "creationMode": "file",
+      "creationMode": "folder",
       "indexFileName": "index",
       "ignoreSubfolders": false,
-      "enableUnderscorePrefix": false
+      "enableUnderscorePrefix": true
     },
     {
       "id": "content-1765432392567",
@@ -45,32 +45,38 @@
       "linkBasePath": "/projects/",
       "template": "---\ntitle: \"{{title}}\"\ndescription: \"\"\ndate: {{date}}\ncategories: []\nrepositoryUrl:\nprojectUrl: \"\"\nstatus: \"\"\nimage: \"\"\nimageAlt: \"\"\nhideCoverImage: false\nhideTOC: false\ndraft: false\nfeatured: false\n---\n",
       "enabled": true,
-      "creationMode": "file",
+      "creationMode": "folder",
       "indexFileName": "index",
       "ignoreSubfolders": false,
-      "enableUnderscorePrefix": false
+      "enableUnderscorePrefix": true
     },
     {
       "id": "content-1765432406133",
       "name": "Documentation",
       "folder": "docs",
       "linkBasePath": "/docs/",
-      "template": "---\ntitle: \"{{title}}\"\ndescription: \"\"\ncategory: \"\"\norder: 2\nversion: \"\"\nlastModified: {{date}}\nimage:\nimageAlt:\nhideCoverImage: false\nhideTOC: false\ndraft: false\nfeatured: true\n---\n",
+      "template": "---\ntitle: \"{{title}}\"\ndescription: \"\"\ncategory: \"\"\norder: \nversion: \"\"\nlastModified: {{date}}\nimage:\nimageAlt:\nhideCoverImage: false\nhideTOC: false\ndraft: true\nfeatured: false\naliases:\n  - {{title}}\n---\n",
       "enabled": true,
-      "creationMode": "file",
+      "creationMode": "folder",
       "indexFileName": "index",
       "ignoreSubfolders": false,
-      "enableUnderscorePrefix": false
+      "enableUnderscorePrefix": true
     }
   ],
   "migrationCompleted": true,
   "helpButtonReplacement": {
     "enabled": true,
     "commandId": "astro-modular-settings:open-settings",
-    "iconId": "wrench"
+    "iconId": "lucide-wrench"
   },
   "showMdxFilesInExplorer": false,
   "processBackgroundFileChanges": true,
+  "syncDraftDate": false,
+  "draftProperty": "",
+  "draftLogic": "true-is-draft",
+  "publishDateField": "",
+  "updateModifiedDate": false,
+  "modifiedDateField": "",
   "integratedTerminalShell": "powershell",
   "newInstanceBehavior": "newHorizontalSplit",
   "createInstanceNearExistingOnes": true,
@@ -78,9 +84,5 @@
   "pinNewInstance": true,
   "hideStatusBar": "focused",
   "noticeTimeout": 5,
-  "errorNoticeTimeout": 0,
-  "linkBasePath": "/posts/",
-  "enableAutoRename": true,
-  "enableAutoInsertFrontmatter": true,
-  "draftStyle": "filename"
+  "errorNoticeTimeout": 0
 }

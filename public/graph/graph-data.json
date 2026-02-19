@@ -5,7 +5,7 @@
       "type": "post",
       "title": "Formatting Reference",
       "slug": "formatting-reference",
-      "connections": 13
+      "connections": 12
     },
     {
       "id": "getting-started",
@@ -22,10 +22,17 @@
       "connections": 0
     },
     {
-      "id": "sample-folder-based-post",
+      "id": "obsidian-livesync-cloudflare",
       "type": "post",
-      "title": "Sample Folder-Based Post",
-      "slug": "sample-folder-based-post",
+      "title": "Obsidian Livesync Cloudflare",
+      "slug": "obsidian-livesync-cloudflare",
+      "connections": 0
+    },
+    {
+      "id": "post-test",
+      "type": "post",
+      "title": "Post Test",
+      "slug": "post-test",
       "connections": 0
     },
     {
@@ -45,11 +52,6 @@
     {
       "source": "formatting-reference",
       "target": "getting-started",
-      "type": "link"
-    },
-    {
-      "source": "formatting-reference",
-      "target": "sample-folder-based-post",
       "type": "link"
     },
     {
@@ -119,9 +121,9 @@
     }
   ],
   "metadata": {
-    "totalPosts": 5,
-    "totalConnections": 16,
+    "totalPosts": 6,
+    "totalConnections": 15,
     "maxNodesApplied": false,
-    "originalNodeCount": 5
+    "originalNodeCount": 6
   }
 }
