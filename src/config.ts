@@ -182,21 +182,12 @@ export interface SiteConfig {
 export const siteConfig: SiteConfig = {
   // Site Information
   // [CONFIG:SITE_URL]
-<<<<<<< HEAD
   site: "https://shawn.onl/",
   base: "/",
   // [CONFIG:SITE_TITLE]
   title: "Shawn.onl",
   // [CONFIG:SITE_DESCRIPTION]
   description: "My personal blog",
-=======
-  site: "https://rafshawn.github.io/braindump",
-  base: "/braindump/",
-  // [CONFIG:SITE_TITLE]
-  title: "Braindump",
-  // [CONFIG:SITE_DESCRIPTION]
-  description: "My personal knowledge bank",
->>>>>>> origin/main
   // [CONFIG:SITE_AUTHOR]
   author: "Shawn Adrian",
   // [CONFIG:SITE_LANGUAGE]
@@ -212,25 +203,15 @@ export const siteConfig: SiteConfig = {
   // [CONFIG:CUSTOM_THEME_FILE]
   customThemeFile: "custom", // Only used if theme is set to "custom" above. Filename in src/themes/custom/ (without .ts extension)
   // [CONFIG:AVAILABLE_THEMES]
-<<<<<<< HEAD
   availableThemes: ["oxygen", "minimal", "atom", "ayu", "catppuccin", "charcoal", "dracula", "everforest", "flexoki", "gruvbox", "macos", "nord", "obsidian", "rose-pine", "sky", "solarized", "things"], // "default" to show all built-in themes, or array of theme names like ["oxygen", "minimal", "obsidianite"] to limit choices (can include custom theme filenames)
-=======
-  availableThemes: "default", // "default" to show all built-in themes, or array of theme names like ["oxygen", "minimal", "obsidianite"] to limit choices (can include custom theme filenames)
->>>>>>> origin/main
   fonts: {
     // [CONFIG:FONT_SOURCE]
     source: "cdn", // "local" for self-hosted @fontsource fonts, "cdn" for Google Fonts CDN
     families: {
       // [CONFIG:FONT_BODY]
-<<<<<<< HEAD
       body: "Barlow",      // Body text font family
       // [CONFIG:FONT_HEADING]
       heading: "Stack Sans Headline",   // Heading font family
-=======
-      body: "Source Sans Pro",      // Body text font family
-      // [CONFIG:FONT_HEADING]
-      heading: "Plus Jakarta Sans",   // Heading font family
->>>>>>> origin/main
       // [CONFIG:FONT_MONO]
       mono: "JetBrains Mono", // Monospace font family
     },
@@ -239,11 +220,7 @@ export const siteConfig: SiteConfig = {
   },
   layout: {
     // [CONFIG:LAYOUT_CONTENT_WIDTH]
-<<<<<<< HEAD
     contentWidth: "50rem",
-=======
-    contentWidth: "45rem",
->>>>>>> origin/main
   },
   tableOfContents: {
     // [CONFIG:TABLE_OF_CONTENTS_ENABLED]
@@ -341,15 +318,10 @@ export const siteConfig: SiteConfig = {
       { title: "Docs", url: "/docs/" },
       { title: "About", url: "/about/",
         children: [
-<<<<<<< HEAD
           { title: "About Me", url: "/about" },
           { title: "My Resume", url: "/resume" }
         ] },
       { title: "turmi.nl", url: "https://turmi.nl/" }
-=======
-          { title: "My Resume", url: "/resume" }
-        ] }
->>>>>>> origin/main
     ],
     // [CONFIG:NAVIGATION_SOCIAL]
     social: [
@@ -564,12 +536,8 @@ export function getGoogleFontsUrl(headingFont: string, bodyFont: string): string
     'Inter', 'Roboto', 'Open Sans', 'Lato', 'Poppins', 'Source Sans Pro',
     'Nunito', 'Montserrat', 'Playfair Display', 'Merriweather', 'Lora',
     'Crimson Text', 'PT Serif', 'Libre Baskerville', 'Fira Code',
-<<<<<<< HEAD
     'JetBrains Mono', 'Source Code Pro', 'IBM Plex Mono', 'Cascadia Code',
     'Plus Jakarta Sans', 'Space Mono', 'Stack Sans Headline', 'Barlow'
-=======
-    'JetBrains Mono', 'Source Code Pro', 'IBM Plex Mono', 'Cascadia Code'
->>>>>>> origin/main
   ];
 
   const fonts = new Set<string>();

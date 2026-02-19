@@ -1,7 +1,6 @@
 {
   "nodes": [
     {
-<<<<<<< HEAD
       "id": "_my-favourite-artists",
       "type": "post",
       "title": "My Favourite Artists",
@@ -9,8 +8,6 @@
       "connections": 0
     },
     {
-=======
->>>>>>> origin/main
       "id": "formatting-reference",
       "type": "post",
       "title": "Formatting Reference",
@@ -39,16 +36,6 @@
       "connections": 0
     },
     {
-<<<<<<< HEAD
-=======
-      "id": "post-test",
-      "type": "post",
-      "title": "Post Test",
-      "slug": "post-test",
-      "connections": 0
-    },
-    {
->>>>>>> origin/main
       "id": "vault-cms-guide",
       "type": "post",
       "title": "Vault CMS Guide",

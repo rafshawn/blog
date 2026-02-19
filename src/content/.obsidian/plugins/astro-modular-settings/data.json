@@ -21,11 +21,7 @@
     "defaultOgImageAlt": "Astro Modular logo."
   },
   "layout": {
-<<<<<<< HEAD
     "contentWidth": "50rem"
-=======
-    "contentWidth": "45rem"
->>>>>>> origin/main
   },
   "tableOfContents": {
     "enabled": true,
@@ -61,24 +57,18 @@
         "url": "/about/",
         "children": [
           {
-<<<<<<< HEAD
             "title": "About Me",
             "url": "/about"
           },
           {
-=======
->>>>>>> origin/main
             "title": "My Resume",
             "url": "/resume"
           }
         ]
-<<<<<<< HEAD
       },
       {
         "title": "turmi.nl",
         "url": "https://turmi.nl/"
-=======
->>>>>>> origin/main
       }
     ],
     "social": [
@@ -199,28 +189,16 @@
     }
   },
   "typography": {
-<<<<<<< HEAD
     "headingFont": "Space Mono",
     "proseFont": "Plus Jakarta Sans",
-=======
-    "headingFont": "Plus Jakarta Sans",
-    "proseFont": "Source Sans Pro",
->>>>>>> origin/main
     "monoFont": "JetBrains Mono",
     "fontSource": "cdn",
     "fontDisplay": "swap",
     "customFonts": {
-<<<<<<< HEAD
       "heading": "Stack Sans Notch",
       "prose": "Stack Sans Text",
       "mono": "JetBrains Mono",
       "urls": ""
-=======
-      "heading": "Plus Jakarta Sans",
-      "prose": "Source Sans Pro",
-      "mono": "JetBrains Mono",
-      "urls": "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
->>>>>>> origin/main
     }
   },
   "optionalFeatures": {
@@ -272,7 +250,6 @@
     "projects": true,
     "docs": true
   },
-<<<<<<< HEAD
   "availableThemes": [
     "oxygen",
     "minimal",
@@ -292,9 +269,6 @@
     "solarized",
     "things"
   ],
-=======
-  "availableThemes": "default",
->>>>>>> origin/main
   "customThemes": "",
   "customThemeGenerationEnabled": false,
   "removeRibbonIcon": false

@@ -1,38 +1,6 @@
-<<<<<<< HEAD
-# Braindump Repo
-> [!IMPORTANT]
-> First entry. Fix and add more info later
-
-I compiled my notes in Joplin. Joplin is great, don't get me wrong--but I also wanted to create a wikidocs styled static page where I can access all my learning in like a webpage and whenever I feel like it.
-
-Hopefully as I build this up, people can also take advantage of it as a silly (but free!) learning or review source. It's certainly meant for my notetaking and review!
-
-The notes here are meant to be refined and compiled after I write things down to understand concepts well enough. i.e., No room for half-baked or unseasoned content (hopefully)!
-
-- SSG: [VitePress](https://vitepress.dev/)
-- Theme: [Catpuccin](https://vitepress.catppuccin.com/)
-
-# Extensions
-- [Math Equations](https://vitepress.dev/guide/markdown#math-equations)
-- [VitePress Image Optimization](https://unlocomqx.github.io/vitepress-plugin-image-optimize/) (*Credits to [unlocomqx](https://github.com/unlocomqx)*)
-
-# TODO:
-- [ ] Build and deploy (Github Pages)
-- [ ] Fix/Update README
-- [ ] Go over VitePress [References](https://vitepress.dev/reference/)
-  - [ ] Understand Frontmatter Config
-  - [ ] Add a homepage
-  - [ ] Add a footer
-  - [ ] Review navbar
-- [ ] Migrate notes from Joplin
-- [ ] Fix formatting (RTOS)
-  - [x] Fix arrows, section 10 ($\to$)
-    - [x] ~~On that note, math functionality?~~
-- [ ] Make subjects section look nice, I guess?
-=======
 # Astro Modular
 
-A flexible [Astro](https://astro.build) blog theme designed for [Obsidian](https://obsidian.md) users. 
+A flexible [Astro](https://astro.build) blog theme designed for [Obsidian](https://obsidian.md) users.
 
 [![Alt](https://github.com/user-attachments/assets/612b2171-d141-412b-a891-5b1caa1447b8 "Astro Modular theme shown off in 3 screenshots, with the left screenshot showing the homepage, the top right showing the bottom of a post, and the bottom right showing a minimal homepage")](https://astro.build/themes/details/astro-modular/)
 
@@ -71,27 +39,27 @@ Use Obsidian as a CMS with [Vault CMS](https://github.com/davidvkimball/vault-cm
 
 ## Features
 
-- [x] **Custom Themes** 
-- [x] **Feature Toggle Control** 
-- [x] **Dark/Light Mode** 
-- [x] **Search & Command Palette** 
-- [x] **Wikilinks & Linked Mentions** 
+- [x] **Custom Themes**
+- [x] **Feature Toggle Control**
+- [x] **Dark/Light Mode**
+- [x] **Search & Command Palette**
+- [x] **Wikilinks & Linked Mentions**
 - [x] **Obsidian-Style Callouts**
 - [x] **Obsidian Embeds Files**
-- [x] **Folder-Based Posts** 
+- [x] **Folder-Based Posts**
 - [x] **Multiple Content Types**
-- [x] **Image Optimization** 
+- [x] **Image Optimization**
 - [x] **Automatic Feed Generation**
-- [x] **Table of Contents** 
-- [x] **Smooth Scroll & Page Transitions** 
-- [x] **Image Gallery & Lightbox** 
-- [x] **Reading Time & Word Count** 
+- [x] **Table of Contents**
+- [x] **Smooth Scroll & Page Transitions**
+- [x] **Image Gallery & Lightbox**
+- [x] **Reading Time & Word Count**
 - [x] **Tagging**
 - [x] **Graph View**
 - [x] **Mermaid Diagrams**
-- [x] **LaTeX & Math Rendering** 
+- [x] **LaTeX & Math Rendering**
 - [x] **Custom Typography**
-- [x] **Profile Picture** 
+- [x] **Profile Picture**
 - [x] **Comments**
 
 ## Quick Start
@@ -168,7 +136,7 @@ Set your deployment platform once in `src/config.ts` under `deployment.platform`
 
 For detailed guides, see the included blog posts:
 - **[Getting Started](src/content/posts/getting-started.md)** - complete setup and workflow guide
-- **[Formatting Reference](src/content/posts/formatting-reference.md)** - comprehensive formatting reference  
+- **[Formatting Reference](src/content/posts/formatting-reference.md)** - comprehensive formatting reference
 - **[Astro Suite Vault Guide](src/content/posts/astro-suite-vault-modular-guide.md)** - Obsidian vault walkthrough
 - **[Obsidian Embeds Demo](src/content/posts/obsidian-embeds-demo.md)** - Obsidian embed examples
 
@@ -178,7 +146,7 @@ For detailed guides, see the included blog posts:
 
 [![Star History Chart](https://api.star-history.com/svg?repos=davidvkimball/astro-modular&type=date&legend=top-left)](https://www.star-history.com/#davidvkimball/astro-modular&type=date&legend=top-left)
 
-## Acknowledgments 
+## Acknowledgments
 
 [Spaceship Astro theme](https://github.com/aitorllj93/astro-theme-spaceship) for the graph view functionality upon which this theme's is based.
 
@@ -191,4 +159,3 @@ This is an open-source project. Feel free to submit feature requests, report bug
 ## License
 
 [MIT License](https://github.com/davidvkimball/astro-modular?tab=MIT-1-ov-file)
->>>>>>> origin/main
