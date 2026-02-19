@@ -15,6 +15,8 @@ draft: false
 ---
 Recently, I migrated away from [Joplin](https://joplinapp.org/) and started using [Obsidian](https://obsidian.md/) for my notes. They're both really good note-taking apps, but Obsidian has been an overall nicer experience. I templated [how Steph Ango writes his notes](https://stephango.com/vault) to help figure out my own workflow.
 
+![obsidian|600](obsidian.png)
+
 One thing that I miss about Joplin though is the ability to use Dropbox to sync notes across devices. It's a seamless and free alternative to Joplin's servers, and all I needed was a Dropbox account.
 ## Syncing Notes
 It's not to say that you're stuck with no syncing options.
