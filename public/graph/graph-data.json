@@ -31,8 +31,15 @@
     {
       "id": "obsidian-livesync-cloudflare",
       "type": "post",
-      "title": "Obsidian Livesync Cloudflare",
+      "title": "Obsidian Livesync with Cloudflare R2",
       "slug": "obsidian-livesync-cloudflare",
+      "connections": 0
+    },
+    {
+      "id": "post-test",
+      "type": "post",
+      "title": "Post Test",
+      "slug": "post-test",
       "connections": 0
     },
     {
@@ -121,9 +128,9 @@
     }
   ],
   "metadata": {
-    "totalPosts": 6,
+    "totalPosts": 7,
     "totalConnections": 15,
     "maxNodesApplied": false,
-    "originalNodeCount": 6
+    "originalNodeCount": 7
   }
 }
