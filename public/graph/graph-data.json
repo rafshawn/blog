@@ -1,0 +1,129 @@
+{
+  "nodes": [
+    {
+      "id": "_my-favourite-artists",
+      "type": "post",
+      "title": "My Favourite Artists",
+      "slug": "_my-favourite-artists",
+      "connections": 0
+    },
+    {
+      "id": "formatting-reference",
+      "type": "post",
+      "title": "Formatting Reference",
+      "slug": "formatting-reference",
+      "connections": 12
+    },
+    {
+      "id": "getting-started",
+      "type": "post",
+      "title": "Getting Started",
+      "slug": "getting-started",
+      "connections": 6
+    },
+    {
+      "id": "obsidian-embeds-demo",
+      "type": "post",
+      "title": "Obsidian Embeds Demo",
+      "slug": "obsidian-embeds-demo",
+      "connections": 0
+    },
+    {
+      "id": "obsidian-livesync-cloudflare",
+      "type": "post",
+      "title": "Obsidian Livesync Cloudflare",
+      "slug": "obsidian-livesync-cloudflare",
+      "connections": 0
+    },
+    {
+      "id": "vault-cms-guide",
+      "type": "post",
+      "title": "Vault CMS Guide",
+      "slug": "vault-cms-guide",
+      "connections": 0
+    }
+  ],
+  "connections": [
+    {
+      "source": "formatting-reference",
+      "target": "getting-started",
+      "type": "link"
+    },
+    {
+      "source": "formatting-reference",
+      "target": "getting-started",
+      "type": "link"
+    },
+    {
+      "source": "formatting-reference",
+      "target": "vault-cms-guide",
+      "type": "link"
+    },
+    {
+      "source": "formatting-reference",
+      "target": "obsidian-embeds-demo",
+      "type": "link"
+    },
+    {
+      "source": "formatting-reference",
+      "target": "getting-started",
+      "type": "link"
+    },
+    {
+      "source": "formatting-reference",
+      "target": "getting-started",
+      "type": "link"
+    },
+    {
+      "source": "formatting-reference",
+      "target": "getting-started",
+      "type": "link"
+    },
+    {
+      "source": "formatting-reference",
+      "target": "obsidian-embeds-demo",
+      "type": "link"
+    },
+    {
+      "source": "formatting-reference",
+      "target": "obsidian-embeds-demo",
+      "type": "link"
+    },
+    {
+      "source": "getting-started",
+      "target": "vault-cms-guide",
+      "type": "link"
+    },
+    {
+      "source": "getting-started",
+      "target": "formatting-reference",
+      "type": "link"
+    },
+    {
+      "source": "getting-started",
+      "target": "vault-cms-guide",
+      "type": "link"
+    },
+    {
+      "source": "getting-started",
+      "target": "formatting-reference",
+      "type": "link"
+    },
+    {
+      "source": "getting-started",
+      "target": "vault-cms-guide",
+      "type": "link"
+    },
+    {
+      "source": "getting-started",
+      "target": "formatting-reference",
+      "type": "link"
+    }
+  ],
+  "metadata": {
+    "totalPosts": 6,
+    "totalConnections": 15,
+    "maxNodesApplied": false,
+    "originalNodeCount": 6
+  }
+}

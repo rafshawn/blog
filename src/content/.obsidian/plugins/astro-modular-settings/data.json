@@ -1,0 +1,275 @@
+{
+  "runWizardOnStartup": false,
+  "currentTemplate": "standard",
+  "currentTheme": "dracula",
+  "customThemeFile": "custom",
+  "contentOrganization": "folder-based",
+  "themeColors": {
+    "mode": "simple",
+    "simpleColors": {
+      "accent": "#5865f2",
+      "background": "#1e1e1e"
+    }
+  },
+  "siteInfo": {
+    "site": "https://shawn.onl/",
+    "title": "Shawn.onl",
+    "description": "My personal blog",
+    "author": "Shawn Adrian",
+    "language": "en",
+    "faviconThemeAdaptive": true,
+    "defaultOgImageAlt": "Astro Modular logo."
+  },
+  "layout": {
+    "contentWidth": "50rem"
+  },
+  "tableOfContents": {
+    "enabled": true,
+    "depth": 4
+  },
+  "footer": {
+    "enabled": true,
+    "content": "© 2026 {author}. Built with <a href=\"https://github.com/davidvkimball/astro-modular\" target=\"_blank\">Astro Modular</a>.",
+    "showSocialIconsInFooter": true
+  },
+  "seo": {
+    "defaultOgImageAlt": "Astro Modular logo."
+  },
+  "navigation": {
+    "showNavigation": true,
+    "style": "traditional",
+    "showMobileMenu": true,
+    "pages": [
+      {
+        "title": "Posts",
+        "url": "/posts/"
+      },
+      {
+        "title": "Projects",
+        "url": "/projects/"
+      },
+      {
+        "title": "Docs",
+        "url": "/docs/"
+      },
+      {
+        "title": "About",
+        "url": "/about/",
+        "children": [
+          {
+            "title": "About Me",
+            "url": "/about"
+          },
+          {
+            "title": "My Resume",
+            "url": "/resume"
+          }
+        ]
+      },
+      {
+        "title": "turmi.nl",
+        "url": "https://turmi.nl/"
+      }
+    ],
+    "social": [
+      {
+        "title": "Linkedin",
+        "url": "https://linkedin.com/in/shawn-adrian",
+        "icon": "linkedin"
+      },
+      {
+        "title": "GitHub",
+        "url": "https://github.com/rafshawn",
+        "icon": "github"
+      }
+    ]
+  },
+  "commandPalette": {
+    "enabled": true,
+    "shortcut": "ctrl+K",
+    "placeholder": "Search posts",
+    "search": {
+      "posts": true,
+      "pages": false,
+      "projects": false,
+      "docs": false
+    },
+    "sections": {
+      "quickActions": true,
+      "pages": true,
+      "social": true
+    },
+    "quickActions": {
+      "enabled": true,
+      "toggleMode": true,
+      "graphView": true,
+      "changeTheme": true
+    }
+  },
+  "homeOptions": {
+    "featuredPost": {
+      "enabled": true,
+      "type": "latest",
+      "slug": "getting-started"
+    },
+    "recentPosts": {
+      "enabled": true,
+      "count": 7
+    },
+    "projects": {
+      "enabled": true,
+      "count": 2
+    },
+    "docs": {
+      "enabled": false,
+      "count": 3
+    },
+    "blurb": {
+      "placement": "below"
+    }
+  },
+  "postOptions": {
+    "postsPerPage": 6,
+    "readingTime": true,
+    "wordCount": true,
+    "tags": true,
+    "linkedMentions": {
+      "enabled": true,
+      "linkedMentionsCompact": false
+    },
+    "graphView": {
+      "enabled": true,
+      "showInSidebar": true,
+      "maxNodes": 100,
+      "showOrphanedPosts": true
+    },
+    "postNavigation": true,
+    "showPostCardCoverImages": "featured-and-posts",
+    "postCardAspectRatio": "16:9",
+    "customPostCardAspectRatio": "2.5/1",
+    "comments": {
+      "enabled": false,
+      "provider": "giscus",
+      "rawScript": "",
+      "repo": "",
+      "repoId": "",
+      "category": "",
+      "categoryId": "",
+      "mapping": "",
+      "strict": "",
+      "reactions": "",
+      "metadata": "",
+      "inputPosition": "",
+      "theme": "",
+      "lang": "",
+      "loading": ""
+    }
+  },
+  "features": {
+    "commandPalette": true,
+    "readingTime": true,
+    "linkedMentions": true,
+    "linkedMentionsCompact": false,
+    "graphView": true,
+    "postNavigation": true,
+    "hideScrollBar": false,
+    "scrollToTop": true,
+    "showSocialIconsInFooter": true,
+    "profilePicture": false,
+    "comments": false,
+    "featureButton": "mode",
+    "showPostCardCoverImages": "featured-and-posts",
+    "postCardAspectRatio": "16:9",
+    "customPostCardAspectRatio": "2.5/1",
+    "quickActions": {
+      "enabled": true,
+      "toggleMode": true,
+      "graphView": true,
+      "changeTheme": true
+    }
+  },
+  "typography": {
+    "headingFont": "Space Mono",
+    "proseFont": "Plus Jakarta Sans",
+    "monoFont": "JetBrains Mono",
+    "fontSource": "cdn",
+    "fontDisplay": "swap",
+    "customFonts": {
+      "heading": "Stack Sans Notch",
+      "prose": "Stack Sans Text",
+      "mono": "JetBrains Mono",
+      "urls": ""
+    }
+  },
+  "optionalFeatures": {
+    "profilePicture": {
+      "enabled": false,
+      "image": "/profile.jpg",
+      "alt": "Profile picture",
+      "size": "md",
+      "url": "",
+      "placement": "footer",
+      "style": "circle"
+    },
+    "comments": {
+      "enabled": false,
+      "provider": "giscus",
+      "rawScript": "",
+      "repo": "",
+      "repoId": "",
+      "category": "",
+      "categoryId": "",
+      "mapping": "",
+      "strict": "",
+      "reactions": "",
+      "metadata": "",
+      "inputPosition": "",
+      "theme": "",
+      "lang": "",
+      "loading": ""
+    }
+  },
+  "deployment": {
+    "platform": "github-pages"
+  },
+  "pluginConfig": {
+    "obsidianSettings": {
+      "attachmentLocation": "subfolder",
+      "subfolderName": "attachments"
+    },
+    "astroComposerSettings": {
+      "creationMode": "file",
+      "indexFileName": "index"
+    },
+    "imageInserterSettings": {
+      "valueFormat": "[[attachments/{image-url}]]",
+      "insertFormat": "[[attachments/{image-url}]]"
+    }
+  },
+  "optionalContentTypes": {
+    "projects": true,
+    "docs": true
+  },
+  "availableThemes": [
+    "oxygen",
+    "minimal",
+    "atom",
+    "ayu",
+    "catppuccin",
+    "charcoal",
+    "dracula",
+    "everforest",
+    "flexoki",
+    "gruvbox",
+    "macos",
+    "nord",
+    "obsidian",
+    "rose-pine",
+    "sky",
+    "solarized",
+    "things"
+  ],
+  "customThemes": "",
+  "customThemeGenerationEnabled": false,
+  "removeRibbonIcon": false
+}
