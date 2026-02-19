@@ -2,15 +2,23 @@
 title: Obsidian Livesync Cloudflare
 date: 2026-02-03
 description: ""
+<<<<<<< HEAD
 tags:
   - cloudflare
+=======
+tags: []
+>>>>>>> origin/main
 image: ""
 imageAlt: ""
 imageOG: false
 hideCoverImage: false
 hideTOC: false
 targetKeyword: ""
+<<<<<<< HEAD
 draft: false
+=======
+draft: true
+>>>>>>> origin/main
 ---
 ## Minimal setup
 - With the setup wizard, first select "I am setting this up for the first time"

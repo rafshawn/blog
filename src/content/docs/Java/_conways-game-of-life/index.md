@@ -1,7 +1,11 @@
 ---
 title: Conway's Game of Life
 description: ""
+<<<<<<< HEAD
 category: Java
+=======
+category: ""
+>>>>>>> origin/main
 order: 4
 version: ""
 lastModified: 2026-02-18

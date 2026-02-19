@@ -46,4 +46,8 @@ obsidian_askpass.sh
 
 # Generated deployment platform files (GitHub Pages + Cloudflare Workers only)
 public/_redirects
+<<<<<<< HEAD
 public/_headers
+=======
+public/_headers
+>>>>>>> origin/main
