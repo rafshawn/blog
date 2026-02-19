@@ -10,6 +10,7 @@ import { remarkObsidianEmbeds } from './src/utils/remark-obsidian-embeds.ts';
 import remarkBases from './src/utils/remark-bases.ts';
 import remarkInlineTags from './src/utils/remark-inline-tags.ts';
 import { remarkObsidianComments } from './src/utils/remark-obsidian-comments.ts';
+import remarkObsidianImageSize from './src/utils/remark-obsidian-image-size.ts';
 import remarkMath from 'remark-math';
 import remarkReadingTime from 'remark-reading-time';
 import remarkToc from 'remark-toc';
@@ -114,7 +115,7 @@ image: {
       containers: ['#swup-container'],
       smoothScrolling: false,
       cache: true,
-      preload: true, 
+      preload: true,
       accessibility: false,
       updateHead: true,
       updateBodyClass: false,
@@ -131,6 +132,7 @@ image: {
   ],
   markdown: {
       remarkPlugins: [
+      remarkObsidianImageSize, // Parse Obsidian image size syntax first
       remarkInternalLinks,
       remarkInlineTags,
       remarkObsidianComments, // Remove Obsidian comments (%%...%%) early in processing
@@ -145,7 +147,7 @@ image: {
       remarkImageGrids,
       remarkMermaid,
       [remarkReadingTime, {}],
-      [remarkToc, { 
+      [remarkToc, {
         tight: true,
         ordered: false,
         maxDepth: 3,
