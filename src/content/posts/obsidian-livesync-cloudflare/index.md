@@ -1,9 +1,10 @@
 ---
-title: Obsidian Livesync Cloudflare
+title: Obsidian Livesync with Cloudflare R2
 date: 2026-02-03
 description: ""
 tags:
   - cloudflare
+  - obsidian
 image: ""
 imageAlt: ""
 imageOG: false
@@ -12,6 +13,9 @@ hideTOC: false
 targetKeyword: ""
 draft: false
 ---
+Recently, I migrated away from [Joplin](https://joplinapp.org/) and started using [Obsidian](https://obsidian.md/) for my notes. They're both really good note-taking apps, but Obsidian has just been nicer to use so far. I'm a messy notetaker and really like barebones, so I don't even have many plugins installed. I templated [how Steph Ango writes his notes](https://stephango.com/vault) (the idea is [*file over app*](https://stephango.com/file-over-app)) to help figure out my own workflow.
+
+One thing that I do miss about Joplin though is the ability to use Dropbox to sync notes across devices. It's a seamless and free alternative to Joplin's servers. 
 ## Minimal setup
 - With the setup wizard, first select "I am setting this up for the first time"
 - Click "Enter the server information manually"
