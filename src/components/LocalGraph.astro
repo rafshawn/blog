@@ -32,7 +32,7 @@ const shouldShowGraph = true;
     <!-- Icons in top right corner -->
     <div class="absolute top-3 right-3 z-20 flex items-center gap-2">
       <!-- Global graph modal button -->
-      <button 
+      <button
         id="local-graph-modal-btn"
         class="p-1 text-primary-500 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-200 transition-colors pointer-events-auto"
         title="Global Graph"
@@ -40,7 +40,7 @@ const shouldShowGraph = true;
         <Icon name="git-fork" class="w-4 h-4" />
       </button>
       <!-- Fullscreen button -->
-      <button 
+      <button
         id="local-graph-fullscreen-btn"
         class="p-1 text-primary-500 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-200 transition-colors pointer-events-auto"
         title="Expand"
@@ -48,7 +48,7 @@ const shouldShowGraph = true;
         <Icon name="arrow-up-right" class="w-4 h-4" />
       </button>
     </div>
-    
+
     <!-- Graph content -->
     <div id="local-graph-content" class="w-full h-full">
       <!-- Graph will be rendered here -->
@@ -96,10 +96,10 @@ const shouldShowGraph = true;
 
   function filterLocalGraphData(data: any, currentSlug: string): GraphData {
     if (!currentSlug) return { nodes: [], links: [] };
-    
+
     const currentNode = data.nodes.find((node: any) => node.id === currentSlug);
     if (!currentNode) return { nodes: [], links: [] };
-    
+
     const directlyConnectedNodeIds = new Set([currentSlug]);
     data.connections.forEach((conn: any) => {
       if (conn.source === currentSlug || conn.target === currentSlug) {
@@ -107,12 +107,12 @@ const shouldShowGraph = true;
         directlyConnectedNodeIds.add(conn.target);
       }
     });
-    
+
     const relevantNodes = data.nodes.filter((node: any) => directlyConnectedNodeIds.has(node.id));
-    const relevantConnections = data.connections.filter((conn: any) => 
+    const relevantConnections = data.connections.filter((conn: any) =>
       directlyConnectedNodeIds.has(conn.source) && directlyConnectedNodeIds.has(conn.target)
     );
-    
+
     return {
       nodes: relevantNodes.map((node: any) => ({
         id: node.id,
@@ -190,11 +190,11 @@ const shouldShowGraph = true;
       })
       .on("zoom", (event) => {
         containerGroup.attr("transform", event.transform);
-        
+
         // Hide/show labels based on zoom level
         const scale = event.transform.k;
         const labelThreshold = 0.8; // Higher threshold for local graph due to smaller size
-        
+
         if (scale < labelThreshold) {
           // Hide all labels when zoomed out
           labels.style("opacity", 0);
@@ -258,10 +258,10 @@ const shouldShowGraph = true;
             }
           });
           document.body.style.overflow = '';
-          
+
           // Reset local graph state before navigation
           resetLocalGraph();
-          
+
           const url = `/posts/${d.slug}`;
           if ((window as any).swup) {
             (window as any).swup.navigate(url);
@@ -300,13 +300,13 @@ const shouldShowGraph = true;
           .transition()
           .duration(150)
           .attr("stroke", (l) =>
-            (typeof l.source === 'object' ? l.source.id : l.source) === d.id || 
+            (typeof l.source === 'object' ? l.source.id : l.source) === d.id ||
             (typeof l.target === 'object' ? l.target.id : l.target) === d.id
               ? colors.tagFill
               : colors.linkStroke,
           )
           .attr("stroke-opacity", (l) =>
-            (typeof l.source === 'object' ? l.source.id : l.source) === d.id || 
+            (typeof l.source === 'object' ? l.source.id : l.source) === d.id ||
             (typeof l.target === 'object' ? l.target.id : l.target) === d.id ? 0.8 : 0.1,
           );
 
@@ -322,7 +322,7 @@ const shouldShowGraph = true;
         const currentTransform = svg ? d3.zoomTransform(svg.node() as Element) : d3.zoomIdentity;
         const scale = currentTransform.k;
         const labelThreshold = 0.8;
-        
+
         if (scale < labelThreshold) {
           // When zoomed out, only show the hovered node's label at large size
           labels
@@ -335,7 +335,7 @@ const shouldShowGraph = true;
           // When zoomed in, check if we need to enlarge hovered text
           const minHoverSize = 12; // Minimum size for hovered text (smaller for local graph)
           const currentTextSize = 8 * scale; // Current effective text size
-          
+
           labels
             .transition()
             .duration(150)
@@ -383,7 +383,7 @@ const shouldShowGraph = true;
         const currentTransform = svg ? d3.zoomTransform(svg.node() as Element) : d3.zoomIdentity;
         const scale = currentTransform.k;
         const labelThreshold = 0.8;
-        
+
         if (scale < labelThreshold) {
           // When zoomed out, hide all labels and reset font properties
           labels
@@ -396,7 +396,7 @@ const shouldShowGraph = true;
           // When zoomed in, show all labels with appropriate opacity based on text size
           const minHoverSize = 12; // Same threshold as hover logic
           const currentTextSize = 8 * scale; // Current effective text size
-          
+
           labels
             .transition()
             .duration(150)
@@ -467,9 +467,9 @@ const shouldShowGraph = true;
     if (localGraphInitialized) {
       return;
     }
-    
+
     localGraphInitialized = true;
-    
+
     // Ensure GlobalGraph is available for the buttons
     if (!(window as any).openGraphModal && (window as any).initializeGraphModal) {
       (window as any).initializeGraphModal();
@@ -490,14 +490,14 @@ const shouldShowGraph = true;
 
     const currentPath = window.location.pathname;
     let currentSlug = '';
-    
+
     // Try multiple patterns to match the current post
     const patterns = [
       /\/posts\/([^\/]+)/,           // /posts/slug
       /\/posts\/([^\/]+)\/$/,        // /posts/slug/
       /\/posts\/([^\/]+)\/index/,   // /posts/slug/index
     ];
-    
+
     for (const pattern of patterns) {
       const match = currentPath.match(pattern);
       if (match) {
@@ -505,7 +505,7 @@ const shouldShowGraph = true;
         break;
       }
     }
-    
+
     // If no match, try to extract from the last segment
     if (!currentSlug) {
       const segments = currentPath.split('/').filter(Boolean);
@@ -513,28 +513,28 @@ const shouldShowGraph = true;
         currentSlug = segments[1];
       }
     }
-    
+
       fetch('/graph/graph-data.json')
         .then(response => response.json())
         .then((data) => {
-        
+
           const filteredData = filterLocalGraphData(data, currentSlug);
-          
+
         (window as any).localGraphData = data; // Store full data
         (window as any).localGraphFilteredData = filteredData; // Store filtered data
-          
+
           // Check if there are actually connections to show
           if (filteredData.nodes.length <= 1) {
             // Hide the entire graph container if no connections
             outerContainer.style.display = 'none';
             return;
           }
-          
+
           // Show the graph since we have connections
           outerContainer.style.display = 'block';
           container.innerHTML = '';
           renderLocalGraph(container, filteredData);
-          
+
           // Track initial dimensions for resize detection
           lastContainerWidth = container.offsetWidth;
           lastContainerHeight = container.offsetHeight;
@@ -563,7 +563,7 @@ const shouldShowGraph = true;
     if (!(window as any).openGraphModal && (window as any).initializeGraphModal) {
       (window as any).initializeGraphModal();
     }
-    
+
     // Remove existing listeners to prevent duplicates
     const modalBtn = document.getElementById('local-graph-modal-btn');
     if (modalBtn) {
@@ -571,7 +571,7 @@ const shouldShowGraph = true;
       const newModalBtn = document.getElementById('local-graph-modal-btn');
       if (newModalBtn) {
         newModalBtn.addEventListener('click', () => {
-          
+
           // Ensure GlobalGraph is available before trying to open it
           const ensureGlobalGraph = () => {
             if ((window as any).openGraphModal) {
@@ -580,14 +580,14 @@ const shouldShowGraph = true;
             }
             return false;
           };
-          
+
           if (ensureGlobalGraph()) {
             return;
           }
-          
+
           if ((window as any).initializeGraphModal) {
             (window as any).initializeGraphModal();
-            
+
             // Try multiple times with increasing delays
             const attempts = [50, 100, 200, 500];
             attempts.forEach((delay, index) => {
@@ -621,23 +621,23 @@ const shouldShowGraph = true;
     if (fullscreenModalOpen) {
       return;
     }
-    
+
     const existingModal = document.querySelector('.fixed.inset-0.z-50:not(#command-palette-overlay):not(#graph-modal-overlay)');
     if (existingModal) {
       existingModal.remove();
       document.body.style.overflow = '';
     }
-    
+
     fullscreenModalOpen = true;
-    
+
     const modal = document.createElement('div');
     modal.className = 'fixed inset-0 z-50 bg-black/50 backdrop-blur-sm animate-fade-in';
-    
+
     modal.innerHTML = `
       <div class="flex min-h-full items-center justify-center p-4">
         <div class="relative w-full max-w-6xl h-[80vh] bg-primary-50 dark:bg-primary-800 rounded-xl shadow-2xl border border-primary-200 dark:border-primary-700 animate-scale-in">
 
-          <button 
+          <button
             id="local-graph-fullscreen-close"
             class="absolute top-4 right-4 z-10 p-2 text-primary-500 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-200 transition-colors rounded-lg hover:bg-primary-100 dark:hover:bg-primary-700"
             aria-label="Close"
@@ -662,7 +662,7 @@ const shouldShowGraph = true;
       modal.remove();
       document.body.style.overflow = '';
       fullscreenModalOpen = false;
-      
+
       // Reinitialize the local graph after closing fullscreen
       setTimeout(() => {
         const outerContainer = document.getElementById('local-graph-container');
@@ -689,7 +689,7 @@ const shouldShowGraph = true;
 
     if (container) {
       const cachedFilteredData = (window as any).localGraphFilteredData;
-      
+
       if (cachedFilteredData && cachedFilteredData.nodes.length > 1) {
         renderLocalGraph(container as HTMLElement, cachedFilteredData);
       } else {
@@ -759,17 +759,17 @@ const shouldShowGraph = true;
       document.body.style.overflow = '';
       fullscreenModalOpen = false;
     });
-    
+
     (window as any).swup.hooks.on('page:view', () => {
       // Reset and re-initialize local graph after page transition
       resetLocalGraph();
       localGraphInitialized = false;
-      
+
       // Wait for DOM to be ready and then reinitialize
       setTimeout(() => {
         const outerContainer = document.getElementById('local-graph-container');
         const innerContainer = document.getElementById('local-graph-content');
-        
+
         if (outerContainer && innerContainer) {
           initializeLocalGraph();
           setupLocalGraphButtons();
@@ -786,7 +786,7 @@ const shouldShowGraph = true;
         }
       }, 100); // Reduced timeout for faster reinitialization
     });
-    
+
     (window as any).swup.hooks.on('visit:end', () => {
       // Also reinitialize on visit:end as a backup
       if (!localGraphInitialized) {
@@ -814,14 +814,14 @@ const shouldShowGraph = true;
         .then(data => {
           const currentPath = window.location.pathname;
           let currentSlug = '';
-          
+
           // Try multiple patterns to match the current post
           const patterns = [
             /\/posts\/([^\/]+)/,           // /posts/slug
             /\/posts\/([^\/]+)\/$/,        // /posts/slug/
             /\/posts\/([^\/]+)\/index/,   // /posts/slug/index
           ];
-          
+
           for (const pattern of patterns) {
             const match = currentPath.match(pattern);
             if (match) {
@@ -829,7 +829,7 @@ const shouldShowGraph = true;
               break;
             }
           }
-          
+
           const filteredData = filterLocalGraphData(data, currentSlug);
           renderLocalGraph(container, filteredData);
         })
@@ -872,13 +872,13 @@ const shouldShowGraph = true;
         // Fetch fresh data if cache is not available
         const currentPath = window.location.pathname;
         let currentSlug = '';
-        
+
         const patterns = [
           /\/posts\/([^\/]+)/,
           /\/posts\/([^\/]+)\/$/,
           /\/posts\/([^\/]+)\/index/,
         ];
-        
+
         for (const pattern of patterns) {
           const match = currentPath.match(pattern);
           if (match) {
@@ -938,7 +938,7 @@ const shouldShowGraph = true;
     position: relative;
     overflow: hidden;
   }
-  
+
   #local-graph-content {
     width: 100%;
     height: 100%;
@@ -948,16 +948,16 @@ const shouldShowGraph = true;
     transition: opacity 0.2s ease;
     contain: layout style paint;
   }
-  
+
   .animate-spin {
     animation: spin 1s linear infinite;
   }
-  
+
   @keyframes spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
   }
-  
+
   @media (max-width: 768px) {
     #local-graph-container {
       min-height: 240px;
@@ -972,13 +972,13 @@ const shouldShowGraph = true;
   }
 
   @keyframes scale-in {
-    from { 
-      opacity: 0; 
-      transform: scale(0.95) translateY(-10px); 
+    from {
+      opacity: 0;
+      transform: scale(0.95) translateY(-10px);
     }
-    to { 
-      opacity: 1; 
-      transform: scale(1) translateY(0); 
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
     }
   }
 

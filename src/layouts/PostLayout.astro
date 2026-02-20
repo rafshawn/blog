@@ -87,7 +87,7 @@ if (siteConfig.postOptions.graphView.enabled && siteConfig.postOptions.graphView
     const matchingConnections = graphData.connections.filter((conn: any) =>
       conn.source === post.id || conn.target === post.id
     );
-    
+
     hasLocalGraphConnections = matchingConnections.length > 0;
   } catch (error) {
     // If we can't read the graph data at build time, don't show the graph
@@ -138,17 +138,17 @@ if (siteConfig.postOptions.graphView.enabled && siteConfig.postOptions.graphView
           if (Array.isArray(rawImage)) {
             rawImage = rawImage[0];
           }
-          
+
           // Clean Obsidian brackets
           let cleanImagePath = typeof rawImage === 'string' ? rawImage : '';
           if (cleanImagePath.startsWith('[[') && cleanImagePath.endsWith(']]')) {
             cleanImagePath = cleanImagePath.slice(2, -2);
           }
-          
+
           // Determine src and basePath for ImageWrapper
           let imageSrc = cleanImagePath;
           let imageBasePath = '';
-          
+
           if (typeof cleanImagePath === 'string' && cleanImagePath.startsWith('http')) {
             // External URL - pass as-is
             imageSrc = cleanImagePath;
@@ -157,7 +157,7 @@ if (siteConfig.postOptions.graphView.enabled && siteConfig.postOptions.graphView
             // Detect folder-based vs file-based: if image path starts with 'attachments/',
             // it's a single-file post (shared attachments folder)
             const isFileBased = typeof cleanImagePath === 'string' && cleanImagePath.startsWith('attachments/');
-            
+
             if (isFileBased) {
               // Single-file post - remove attachments/ prefix
               imageSrc = cleanImagePath.replace('attachments/', '');
@@ -179,10 +179,10 @@ if (siteConfig.postOptions.graphView.enabled && siteConfig.postOptions.graphView
               }
             }
           }
-          
+
           // Convert to WebP if applicable (sync-images.js creates WebP versions)
           imageSrc = getOptimizedFormat(imageSrc);
-          
+
           return (
             <div class="h-40 sm:h-48 md:h-56 lg:h-64 overflow-hidden rounded-t-lg bg-primary-100 dark:bg-primary-800">
               <ImageWrapper
@@ -346,12 +346,12 @@ if (siteConfig.postOptions.graphView.enabled && siteConfig.postOptions.graphView
 
         wikilinks.forEach(link => {
           const linkText = link.dataset.wikilink;
-          
+
           // Skip same-page anchors (empty data-wikilink) - they're already properly formatted
           if (!linkText || linkText === '') {
             return;
           }
-          
+
           const displayOverride = link.dataset.displayOverride;
           const currentDisplayText = link.textContent;
 
@@ -373,7 +373,7 @@ if (siteConfig.postOptions.graphView.enabled && siteConfig.postOptions.graphView
 
           // First try exact id match (Astro v6 uses id, not slug)
           let post = posts.find(p => p.id === slug);
-          
+
           // If not found, try title match (for wikilinks that use post titles)
           if (!post) {
             post = posts.find(p => createSlugFromTitle(p.data.title) === slug);
@@ -384,7 +384,7 @@ if (siteConfig.postOptions.graphView.enabled && siteConfig.postOptions.graphView
             const currentHref = link.href || link.getAttribute('href') || '';
             const anchorMatch = currentHref.match(/#(.+)$/);
             const anchor = anchorMatch ? anchorMatch[1] : null;
-            
+
             if (anchor) {
               link.href = `/posts/${post.id}#${anchor}`;
             } else {

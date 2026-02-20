@@ -14,7 +14,6 @@ export type AspectRatio =
 export interface SiteConfig {
   // Site Information
   site: string;
-  base: string;
   title: string;
   description: string;
   author: string;

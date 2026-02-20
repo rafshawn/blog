@@ -7,25 +7,25 @@ import Icon from './Icon.astro';
   <button id="lightbox-close" style="position: absolute; top: 16px; right: 16px; z-index: 10; padding: 12px; color: white; background: rgba(0, 0, 0, 0.5); border: none; border-radius: 50%; cursor: pointer; backdrop-filter: blur(4px);">
     <Icon name="x" class="w-6 h-6" />
   </button>
-  
+
   <button id="lightbox-prev" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); z-index: 10; padding: 12px; color: white; background: rgba(0, 0, 0, 0.5); border: none; border-radius: 50%; cursor: pointer; backdrop-filter: blur(4px);">
     <Icon name="chevron-left" class="w-6 h-6" />
   </button>
-  
+
   <button id="lightbox-next" style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); z-index: 10; padding: 12px; color: white; background: rgba(0, 0, 0, 0.5); border: none; border-radius: 50%; cursor: pointer; backdrop-filter: blur(4px);">
     <Icon name="chevron-right" class="w-6 h-6" />
   </button>
-  
+
   <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; padding: 2rem; position: relative;">
     <div style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; max-width: 90vw; max-height: 90vh;">
       <img id="lightbox-image" src="" alt="" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 8px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); display: block; min-width: 200px; min-height: 200px;">
-      
+
       <div id="lightbox-loading" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0, 0, 0, 0.5); border-radius: 8px;">
         <div style="width: 32px; height: 32px; border: 2px solid white; border-top: 2px solid transparent; border-radius: 50%; animation: spin 1s linear infinite;"></div>
       </div>
     </div>
   </div>
-  
+
   <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 16px; background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4), transparent);">
     <div style="text-align: center;">
       <div id="lightbox-caption" style="color: white; font-size: 14px; margin-bottom: 8px;"></div>
@@ -39,28 +39,28 @@ import Icon from './Icon.astro';
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
-  
+
   #lightbox-overlay button:hover {
     background: rgba(0, 0, 0, 0.7) !important;
   }
-  
+
   @media (max-width: 640px) {
     #lightbox-prev,
     #lightbox-next {
       display: none !important;
     }
   }
-  
+
   /* Improve button spacing on mobile */
   @media (max-width: 480px) {
     #lightbox-prev {
       left: 8px !important;
     }
-    
+
     #lightbox-next {
       right: 8px !important;
     }
-    
+
     #lightbox-close {
       top: 8px !important;
       right: 8px !important;
@@ -110,12 +110,12 @@ import Icon from './Icon.astro';
       this.overlay.addEventListener('click', (e) => {
         // Don't close if we just finished dragging
         if (isDragging) return;
-        
+
         // Close if clicking on the overlay itself or any element that's not the image or buttons
         const target = e.target as HTMLElement;
         const isImage = target === this.image || target.closest('img');
         const isButton = target === this.closeButton || target === this.prevButton || target === this.nextButton || target.closest('button');
-        
+
         if (!isImage && !isButton) {
           this.close();
         }
@@ -144,11 +144,11 @@ import Icon from './Icon.astro';
       let isDragging = false;
       let currentX = 0;
       let dragOffset = 0;
-      
+
       // Touch events for mobile
       this.overlay.addEventListener('touchstart', (e) => {
         if (!this.isOpen) return;
-        
+
         // Only handle single-finger swipe (pinch is handled separately)
         if (e.touches.length === 1) {
           startX = e.touches[0].clientX;
@@ -159,30 +159,30 @@ import Icon from './Icon.astro';
           this.image.style.transition = 'none';
         }
       });
-      
+
       this.overlay.addEventListener('touchmove', (e) => {
         if (!this.isOpen || !isDragging || this.isPinching) return;
         currentX = e.touches[0].clientX;
         dragOffset = currentX - startX;
-        
+
         // Apply drag offset to image with some resistance
         const resistance = 0.3;
         this.image.style.transform = `translateX(${dragOffset * resistance}px)`;
         e.preventDefault();
       });
-      
+
       this.overlay.addEventListener('touchend', (e) => {
         if (!this.isOpen || !isDragging || this.isPinching) return;
-        
+
         const endX = e.changedTouches[0].clientX;
         const endY = e.changedTouches[0].clientY;
         const deltaX = endX - startX;
         const deltaY = endY - startY;
-        
+
         // Reset image position
         this.image.style.transition = 'transform 0.3s ease-out';
         this.image.style.transform = 'translateX(0)';
-        
+
         // Only handle horizontal swipes (ignore vertical scrolling)
         if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
           if (deltaX > 0) {
@@ -195,7 +195,7 @@ import Icon from './Icon.astro';
         }
         isDragging = false;
       });
-      
+
       // Mouse events for desktop drag
       this.overlay.addEventListener('mousedown', (e) => {
         if (!this.isOpen) return;
@@ -207,30 +207,30 @@ import Icon from './Icon.astro';
         this.image.style.transition = 'none';
         e.preventDefault(); // Prevent text selection
       });
-      
+
       this.overlay.addEventListener('mousemove', (e) => {
         if (!this.isOpen || !isDragging) return;
         currentX = e.clientX;
         dragOffset = currentX - startX;
-        
+
         // Apply drag offset to image with some resistance
         const resistance = 0.3;
         this.image.style.transform = `translateX(${dragOffset * resistance}px)`;
         e.preventDefault();
       });
-      
+
       this.overlay.addEventListener('mouseup', (e) => {
         if (!this.isOpen || !isDragging) return;
-        
+
         const endX = e.clientX;
         const endY = e.clientY;
         const deltaX = endX - startX;
         const deltaY = endY - startY;
-        
+
         // Reset image position
         this.image.style.transition = 'transform 0.3s ease-out';
         this.image.style.transform = 'translateX(0)';
-        
+
         // Only handle horizontal drags (ignore vertical scrolling)
         if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
           if (deltaX > 0) {
@@ -257,61 +257,61 @@ import Icon from './Icon.astro';
 
     private setupPinchZoom() {
       let touches: Touch[] = [];
-      
+
       this.overlay.addEventListener('touchstart', (e) => {
         if (!this.isOpen) return;
-        
+
         if (e.touches.length === 2) {
           // Two fingers detected - start pinch gesture
           this.isPinching = true;
           touches = Array.from(e.touches);
-          
+
           const touch1 = touches[0];
           const touch2 = touches[1];
           this.initialDistance = Math.hypot(
             touch2.clientX - touch1.clientX,
             touch2.clientY - touch1.clientY
           );
-          
+
           // Disable transition for smooth pinching
           this.image.style.transition = 'none';
           e.preventDefault();
         }
       });
-      
+
       this.overlay.addEventListener('touchmove', (e) => {
         if (!this.isOpen || !this.isPinching) return;
-        
+
         if (e.touches.length === 2) {
           e.preventDefault();
-          
+
           const touch1 = e.touches[0];
           const touch2 = e.touches[1];
           const currentDistance = Math.hypot(
             touch2.clientX - touch1.clientX,
             touch2.clientY - touch1.clientY
           );
-          
+
           // Calculate scale based on distance change
           const scaleChange = currentDistance / this.initialDistance;
           this.currentScale = Math.max(0.5, Math.min(3, this.currentScale * scaleChange));
-          
+
           // Update initial distance for next iteration
           this.initialDistance = currentDistance;
-          
+
           // Apply scale transform
           this.image.style.transform = `scale(${this.currentScale})`;
         }
       });
-      
+
       this.overlay.addEventListener('touchend', (e) => {
         if (this.isPinching && e.touches.length < 2) {
           // Pinch gesture ended
           this.isPinching = false;
-          
+
           // Re-enable transition
           this.image.style.transition = 'transform 0.3s ease-out';
-          
+
           // If zoomed out too much, reset to default
           if (this.currentScale < 0.8) {
             this.currentScale = 1;
@@ -335,7 +335,7 @@ import Icon from './Icon.astro';
         const gallery = clickedButton.closest('.image-grid');
         if (gallery) {
           const galleryImages = gallery.querySelectorAll('img[data-lightbox="gallery"]');
-          
+
           this.images = Array.from(galleryImages).map(img => {
             const imgElement = img as HTMLImageElement;
             const imageData = {
@@ -348,10 +348,10 @@ import Icon from './Icon.astro';
           return;
         }
       }
-      
+
       // Fallback: collect all images (both gallery and regular images)
       const allImages = document.querySelectorAll('img');
-      
+
       this.images = Array.from(allImages).map(img => {
         const imgElement = img as HTMLImageElement;
         const imageData = {
@@ -364,17 +364,17 @@ import Icon from './Icon.astro';
     }
 
     private open(index: number) {
-      
+
       this.currentIndex = index;
       this.currentScale = 1; // Reset zoom level
       this.image.style.transform = 'scale(1)'; // Reset visual transform
       this.isOpen = true;
-      
+
       // Move overlay to body to avoid parent container positioning issues
       if (this.overlay.parentElement !== document.body) {
         document.body.appendChild(this.overlay);
       }
-      
+
       // Show the overlay and force correct positioning
       this.overlay.style.display = 'flex';
       this.overlay.style.visibility = 'visible';
@@ -392,7 +392,7 @@ import Icon from './Icon.astro';
       this.overlay.style.transform = 'none';
       this.overlay.style.transformOrigin = 'initial';
       document.body.style.overflow = 'hidden';
-      
+
       this.loadImage();
       this.updateUI();
     }
@@ -427,10 +427,10 @@ import Icon from './Icon.astro';
       }
 
       const currentImage = this.images[this.currentIndex];
-      
+
       // Show loading spinner
       this.loading.style.display = 'flex';
-      
+
       // Create new image element to preload
       const img = new Image();
       img.onload = () => {
@@ -438,11 +438,11 @@ import Icon from './Icon.astro';
         this.image.alt = currentImage.alt;
         this.loading.style.display = 'none';
       };
-      
+
       img.onerror = () => {
         this.loading.style.display = 'none';
       };
-      
+
       img.src = currentImage.src;
     }
 

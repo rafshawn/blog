@@ -214,13 +214,13 @@ const scrollbarClass = siteConfig.hideScrollBar ? '' : 'show-scrollbars';
       const checkThemeAndInit = () => {
         const isDark = document.documentElement.classList.contains('dark');
         const newTheme = isDark ? 'dark' : 'light';
-        
+
         // Update the meta tag immediately
         const themeMeta = document.querySelector('meta[name="twitter:widgets:theme"]');
         if (themeMeta) {
           themeMeta.setAttribute('content', newTheme);
         }
-        
+
         // Update data-theme attributes on any existing blockquotes
         const twitterEmbeds = document.querySelectorAll('.twitter-tweet');
         twitterEmbeds.forEach(embed => {
@@ -230,7 +230,7 @@ const scrollbarClass = siteConfig.hideScrollBar ? '' : 'show-scrollbars';
 
       // Try immediately
       checkThemeAndInit();
-      
+
       // Also try after theme is applied (when deferred script runs)
       setTimeout(checkThemeAndInit, 500);
       setTimeout(checkThemeAndInit, 1000);
@@ -242,13 +242,13 @@ const scrollbarClass = siteConfig.hideScrollBar ? '' : 'show-scrollbars';
     // Twitter theme change handling - force iframe update
     function handleTwitterThemeChange(isDark) {
       const newTheme = isDark ? 'dark' : 'light';
-      
+
       // Update the meta tag
       const themeMeta = document.querySelector('meta[name="twitter:widgets:theme"]');
       if (themeMeta) {
         themeMeta.setAttribute('content', newTheme);
       }
-      
+
       // Force update all Twitter iframes by updating their src URLs
       const twitterIframes = document.querySelectorAll('iframe[src*="platform.twitter.com/embed/Tweet.html"]');
       twitterIframes.forEach(iframe => {
@@ -380,9 +380,9 @@ const scrollbarClass = siteConfig.hideScrollBar ? '' : 'show-scrollbars';
     // Set favicon based on system theme
     function setFavicon() {
       const faviconThemeAdaptive = window.siteConfig?.faviconThemeAdaptive ?? true;
-      
+
       let faviconUrl;
-      
+
       if (faviconThemeAdaptive) {
         // Use theme-based favicons based on browser preference
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -1131,7 +1131,7 @@ const scrollbarClass = siteConfig.hideScrollBar ? '' : 'show-scrollbars';
 
   <!-- Global scripts - Defer non-critical JavaScript -->
   <script define:vars={{ commentsEnabled: siteConfig.postOptions.comments.enabled }} defer>
-    
+
     // Logger removed - no console output in production
 
     // Define isDev in client-side JavaScript (always false in production)
@@ -1143,9 +1143,9 @@ const scrollbarClass = siteConfig.hideScrollBar ? '' : 'show-scrollbars';
     // Simple favicon function - follows system theme only
     function setFavicon() {
       const faviconThemeAdaptive = window.siteConfig?.faviconThemeAdaptive ?? true;
-      
+
       let faviconUrl;
-      
+
       if (faviconThemeAdaptive) {
         // Use theme-based favicons based on browser preference
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -1611,17 +1611,17 @@ const scrollbarClass = siteConfig.hideScrollBar ? '' : 'show-scrollbars';
       // These aren't handled by Swup (same-page), so browser jumps - we smooth scroll instead
       const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
       const allLinks = document.querySelectorAll('a[href]');
-      
+
       allLinks.forEach(link => {
         const hrefAttr = link.getAttribute('href');
         if (!hrefAttr) return;
-        
+
         // Skip links already handled above (starting with #)
         if (hrefAttr.startsWith('#')) return;
-        
+
         // Skip external links
         if (hrefAttr.startsWith('http') || hrefAttr.startsWith('mailto:') || hrefAttr.startsWith('tel:')) return;
-        
+
         const hashIndex = hrefAttr.indexOf('#');
         if (hashIndex === -1) return; // No hash
 
@@ -1643,7 +1643,7 @@ const scrollbarClass = siteConfig.hideScrollBar ? '' : 'show-scrollbars';
         // Normalize paths - remove trailing slashes and .md extensions for comparison
         const linkPath = linkUrl.pathname.replace(/\/$/, '').replace(/\.md$/, '') || '/';
         const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
-        
+
         // Only attach handler if same page
         if (linkPath === currentPath) {
           link.removeEventListener('click', handleSamePagePathAnchorClick);
@@ -1684,7 +1684,7 @@ const scrollbarClass = siteConfig.hideScrollBar ? '' : 'show-scrollbars';
         e.stopImmediatePropagation(); // Stop all other handlers
 
         const targetElement = document.querySelector(hash);
-        
+
         if (targetElement) {
           // Update URL without triggering Swup
           const currentUrl = window.location.pathname + window.location.search;
@@ -1846,13 +1846,13 @@ const scrollbarClass = siteConfig.hideScrollBar ? '' : 'show-scrollbars';
     function initializeTwitterThemeImmediately() {
       const isDark = document.documentElement.classList.contains('dark');
       const newTheme = isDark ? 'dark' : 'light';
-      
+
       // Update the meta tag immediately
       const themeMeta = document.querySelector('meta[name="twitter:widgets:theme"]');
       if (themeMeta) {
         themeMeta.setAttribute('content', newTheme);
       }
-      
+
       // Update data-theme attributes on any existing blockquotes
       const twitterEmbeds = document.querySelectorAll('.twitter-tweet');
       twitterEmbeds.forEach(embed => {
@@ -1896,8 +1896,8 @@ const scrollbarClass = siteConfig.hideScrollBar ? '' : 'show-scrollbars';
         const giscusIframe = document.querySelector('iframe.giscus-frame');
         if (giscusIframe) {
           // Get current theme from document or use provided parameter
-          const isDark = isDarkParam !== undefined 
-            ? isDarkParam 
+          const isDark = isDarkParam !== undefined
+            ? isDarkParam
             : document.documentElement.classList.contains('dark');
           const newTheme = isDark ? 'dark' : 'light';
 
@@ -2123,7 +2123,7 @@ const scrollbarClass = siteConfig.hideScrollBar ? '' : 'show-scrollbars';
           if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
             const isDark = document.documentElement.classList.contains('dark');
             const wasDark = mutation.oldValue && mutation.oldValue.includes('dark');
-            
+
             // Only re-render if theme actually changed
             if (isDark !== wasDark) {
               handleMermaidThemeChange();
@@ -2133,7 +2133,7 @@ const scrollbarClass = siteConfig.hideScrollBar ? '' : 'show-scrollbars';
           }
         });
       });
-      
+
       observer.observe(document.documentElement, {
         attributes: true,
         attributeOldValue: true,

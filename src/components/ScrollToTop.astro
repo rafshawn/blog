@@ -15,15 +15,15 @@ import Icon from './Icon.astro';
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const scrollToTopButton = document.getElementById('scroll-to-top');
-    
+
     if (!scrollToTopButton) return;
-    
+
     // Show/hide button based on scroll position
     function toggleScrollButton() {
       if (!scrollToTopButton) return;
-      
+
       const scrolled = window.scrollY > 300;
-      
+
       if (scrolled) {
         scrollToTopButton!.classList.remove('hidden');
         scrollToTopButton!.classList.add('animate-fade-in');
@@ -32,7 +32,7 @@ import Icon from './Icon.astro';
         scrollToTopButton!.classList.remove('animate-fade-in');
       }
     }
-    
+
     // Smooth scroll to top
     function scrollToTop() {
       window.scrollTo({
@@ -40,10 +40,10 @@ import Icon from './Icon.astro';
         behavior: 'smooth'
       });
     }
-    
+
     // Event listeners
     scrollToTopButton.addEventListener('click', scrollToTop);
-    
+
     // Throttled scroll listener
     let ticking = false;
     window.addEventListener('scroll', () => {
@@ -55,7 +55,7 @@ import Icon from './Icon.astro';
         ticking = true;
       }
     });
-    
+
     // Initial check
     toggleScrollButton();
   });
@@ -68,7 +68,7 @@ import Icon from './Icon.astro';
       right: 1rem;
     }
   }
-  
+
   @media (max-width: 480px) {
     #scroll-to-top {
       bottom: 4.5rem; /* Slightly higher on very small screens */

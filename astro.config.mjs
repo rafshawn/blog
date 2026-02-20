@@ -91,8 +91,7 @@ export default defineConfig({
   '/projects/obsidian-astro-composer': '/projects/astro-composer',
   '/projects/obsidian-astro-suite': '/projects/vault-cms',
   '/docs/api-reference': '/docs/api',
-  '/docs/astro-modular-configuration': '/docs/configuration',
-  '/docs/sourcetree-and-git': '/docs/sourcetree-and-git-setup'
+  '/docs/astro-modular-configuration': '/docs/configuration'
 } : {},
 image: {
     service: {

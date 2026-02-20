@@ -20,10 +20,10 @@ export const remarkObsidianComments: Plugin<[], Root> = () => {
 
     // Second pass: Remove paragraphs that only contain comments (now empty after first pass)
     const nodesToRemove: Array<{ parent: any; index: number }> = [];
-    
+
     visit(tree, 'paragraph', (node: Paragraph, index, parent) => {
       if (!parent || typeof index !== 'number') return;
-      
+
       // Check if paragraph has any meaningful content after comment removal
       const hasContent = node.children.some((child: any) => {
         if (child.type === 'text') {
@@ -32,7 +32,7 @@ export const remarkObsidianComments: Plugin<[], Root> = () => {
         // Keep non-text nodes (links, images, etc.) as they are meaningful content
         return true;
       });
-      
+
       // If paragraph has no content, mark it for removal
       if (!hasContent) {
         nodesToRemove.push({ parent, index });

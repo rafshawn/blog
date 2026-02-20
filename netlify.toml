@@ -218,12 +218,6 @@
   force = true
 
 [[redirects]]
-  from = "/docs/sourcetree-and-git"
-  to = "/docs/sourcetree-and-git-setup"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/*"
   to = "/404"
   status = 404

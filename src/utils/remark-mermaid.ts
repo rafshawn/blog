@@ -4,11 +4,11 @@ import type { Root, Code } from 'mdast';
 
 /**
  * Remark plugin for processing Mermaid diagrams
- * 
+ *
  * This plugin detects code blocks with language "mermaid" and transforms them
  * into HTML containers with class "mermaid-diagram" that can be processed by
  * the client-side Mermaid library.
- * 
+ *
  * Follows the same pattern as existing plugins like remarkCallouts and remarkWikilinks.
  */
 

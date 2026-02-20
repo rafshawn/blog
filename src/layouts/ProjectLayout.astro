@@ -140,17 +140,17 @@ const { prev: prevProject, next: nextProject } = getAdjacentPosts(visibleProject
           if (Array.isArray(rawImage)) {
             rawImage = rawImage[0];
           }
-          
+
           // Clean Obsidian brackets
           let cleanImagePath = typeof rawImage === 'string' ? rawImage : '';
           if (cleanImagePath.startsWith('[[') && cleanImagePath.endsWith(']]')) {
             cleanImagePath = cleanImagePath.slice(2, -2);
           }
-          
+
           // Determine src and basePath for ImageWrapper
           let imageSrc = cleanImagePath;
           let imageBasePath = '';
-          
+
           if (typeof cleanImagePath === 'string' && cleanImagePath.startsWith('http')) {
             // External URL - pass as-is
             imageSrc = cleanImagePath;
@@ -159,7 +159,7 @@ const { prev: prevProject, next: nextProject } = getAdjacentPosts(visibleProject
             // Detect folder-based vs file-based: if image path starts with 'attachments/',
             // it's a single-file project (shared attachments folder)
             const isFileBased = typeof cleanImagePath === 'string' && cleanImagePath.startsWith('attachments/');
-            
+
             if (isFileBased) {
               // Single-file project - remove attachments/ prefix
               imageSrc = cleanImagePath.replace('attachments/', '');
@@ -181,10 +181,10 @@ const { prev: prevProject, next: nextProject } = getAdjacentPosts(visibleProject
               }
             }
           }
-          
+
           // Convert to WebP if applicable (sync-images.js creates WebP versions)
           imageSrc = getOptimizedFormat(imageSrc);
-          
+
           return (
             <div class="h-40 sm:h-48 md:h-56 lg:h-64 overflow-hidden rounded-t-lg bg-primary-100 dark:bg-primary-800">
               <ImageWrapper
@@ -429,12 +429,12 @@ const { prev: prevProject, next: nextProject } = getAdjacentPosts(visibleProject
 
           wikilinks.forEach(link => {
             const linkText = link.dataset.wikilink;
-            
+
             // Skip same-page anchors (empty data-wikilink) - they're already properly formatted
             if (!linkText || linkText === '') {
               return;
             }
-            
+
             const displayOverride = link.dataset.displayOverride;
             const currentDisplayText = link.textContent;
 
@@ -456,7 +456,7 @@ const { prev: prevProject, next: nextProject } = getAdjacentPosts(visibleProject
 
             // First try exact id match (Astro v6 uses id, not slug)
             let post = posts.find(p => p.id === slug);
-            
+
             // If not found, try title match (for wikilinks that use post titles)
             if (!post) {
               post = posts.find(p => createSlugFromTitle(p.data.title) === slug);

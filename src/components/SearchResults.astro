@@ -22,13 +22,13 @@ const { results } = Astro.props;
         Results ({results.length})
       </div>
       {results.map((result, index) => (
-        <a 
+        <a
           href={result.url}
           data-index={index}
           class="command-palette-item w-full flex items-start space-x-3 px-3 py-3 hover:bg-primary-50 dark:hover:bg-primary-800 rounded-lg transition-colors group"
         >
-          <Icon 
-            name={result.type === 'post' ? 'file-text' : result.type === 'page' ? 'file' : 'external-link'} 
+          <Icon
+            name={result.type === 'post' ? 'file-text' : result.type === 'page' ? 'file' : 'external-link'}
             class="w-4 h-4 text-primary-500 dark:text-primary-400 group-hover:text-highlight-500 mt-0.5"
           />
           <div class="flex-1 min-w-0">

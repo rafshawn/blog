@@ -43,11 +43,11 @@ function generatePageNumbers(current: number, total: number) {
 
 const pageNumbers = generatePageNumbers(currentPage, totalPages);
 
-const prevUrl = hasPrev 
+const prevUrl = hasPrev
     ? (currentPage === 2 ? baseUrl : `${baseUrl}/${currentPage - 1}`)
     : undefined;
 
-  const nextUrl = hasNext 
+  const nextUrl = hasNext
     ? `${baseUrl}/${currentPage + 1}`
     : undefined;
 ---

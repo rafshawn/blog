@@ -11,7 +11,7 @@ export function rehypeImageAttributes() {
       if (node.tagName === 'img') {
         const properties = node.properties || {};
         const src = (properties.src as string) || '';
-        
+
         // Convert image paths to WebP if available
         // The sync script generates WebP versions of JPG/PNG files
         // Only convert if path doesn't already end with .webp (remarkFolderImages may have already converted it)
@@ -24,17 +24,17 @@ export function rehypeImageAttributes() {
             properties.src = src.replace(/\.(jpg|jpeg|png|gif|bmp|tiff|tif)$/i, '.webp');
           }
         }
-        
+
         // Add loading="lazy" if not already set
         if (!properties.loading) {
           properties.loading = 'lazy';
         }
-        
+
         // Add decoding="async" if not already set
         if (!properties.decoding) {
           properties.decoding = 'async';
         }
-        
+
         // Ensure alt text is present
         if (!properties.alt) {
           properties.alt = '';

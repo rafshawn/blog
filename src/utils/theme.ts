@@ -5,16 +5,16 @@ export type Theme = 'light' | 'dark';
 // Get system theme preference
 export function getSystemTheme(): Theme {
   if (typeof window === 'undefined') return 'light';
-  
-  return window.matchMedia('(prefers-color-scheme: dark)').matches 
-    ? 'dark' 
+
+  return window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
     : 'light';
 }
 
 // Get stored theme preference
 export function getStoredTheme(): Theme | null {
   if (typeof window === 'undefined') return null;
-  
+
   const stored = localStorage.getItem('theme');
   return stored === 'dark' || stored === 'light' ? stored : null;
 }
@@ -27,16 +27,16 @@ export function getCurrentTheme(): Theme {
 // Set theme and store preference
 export function setTheme(theme: Theme) {
   if (typeof window === 'undefined') return;
-  
+
   localStorage.setItem('theme', theme);
   document.documentElement.classList.remove('light', 'dark');
   document.documentElement.classList.add(theme);
-  
+
   // Favicon is handled by system theme detection, not manual theme changes
-  
+
   // Dispatch custom event for theme change
-  window.dispatchEvent(new CustomEvent('themechange', { 
-    detail: { theme } 
+  window.dispatchEvent(new CustomEvent('themechange', {
+    detail: { theme }
   }));
 }
 
@@ -51,11 +51,11 @@ export function toggleTheme() {
 // Initialize theme on page load
 export function initializeTheme() {
   if (typeof window === 'undefined') return;
-  
+
   const theme = getCurrentTheme();
   document.documentElement.classList.add(theme);
   // Favicon is handled by system theme detection, not manual theme changes
-  
+
   // Listen for system theme changes
   window.matchMedia('(prefers-color-scheme: dark)')
     .addEventListener('change', (e) => {
@@ -113,7 +113,7 @@ export function generateThemeCSS(theme: Theme): string {
 // Get theme-aware color value
 export function getThemeColor(colorName: string, theme?: Theme): string {
   const currentTheme = theme || getCurrentTheme();
-  
+
   const colors = {
     light: {
       background: 'rgb(255 255 255)',
@@ -130,7 +130,7 @@ export function getThemeColor(colorName: string, theme?: Theme): string {
       accent: 'rgb(56 189 248)',
     }
   };
-  
+
   return colors[currentTheme]?.[colorName as keyof typeof colors.light] || '';
 }
 
@@ -148,12 +148,12 @@ export function themeClass(lightClass: string, darkClass: string, theme?: Theme)
 // Add smooth transition for theme changes
 export function addThemeTransition() {
   if (typeof window === 'undefined') return;
-  
+
   document.documentElement.style.setProperty(
-    'transition', 
+    'transition',
     'color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out'
   );
-  
+
   // Remove transition after a short delay to avoid affecting other animations
   setTimeout(() => {
     document.documentElement.style.removeProperty('transition');
@@ -163,15 +163,15 @@ export function addThemeTransition() {
 // Create theme-aware media query
 export function createThemeMediaQuery(callback: (isDark: boolean) => void) {
   if (typeof window === 'undefined') return;
-  
+
   const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-  
+
   const handler = (e: MediaQueryListEvent) => {
     callback(e.matches);
   };
-  
+
   mediaQuery.addEventListener('change', handler);
-  
+
   // Return cleanup function
   return () => {
     mediaQuery.removeEventListener('change', handler);

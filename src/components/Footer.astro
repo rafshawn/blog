@@ -20,14 +20,14 @@ const getProfilePictureClasses = (size: string, style: string) => {
     case 'lg': sizeClasses = 'h-16'; break;
     default: sizeClasses = 'h-12'; // md
   }
-  
+
   let styleClasses = '';
   switch (style) {
     case 'circle': styleClasses = 'rounded-full object-cover border-2 border-primary-200 dark:border-primary-700'; break;
     case 'square': styleClasses = 'rounded-lg object-cover border-2 border-primary-200 dark:border-primary-700'; break;
     default: styleClasses = 'object-contain'; // none
   }
-  
+
   return `${sizeClasses} ${styleClasses}`;
 };
 ---
@@ -38,7 +38,7 @@ const getProfilePictureClasses = (size: string, style: string) => {
     {showProfilePicture && footerEnabled && (
       <div class="mb-4 flex justify-start">
         {profilePicture.url ? (
-          <a 
+          <a
             href={profilePicture.url}
             class="inline-block hover:opacity-80 transition-opacity"
             target={profilePicture.url.startsWith('http') ? '_blank' : undefined}
@@ -78,13 +78,13 @@ const getProfilePictureClasses = (size: string, style: string) => {
         </div>
       </div>
     )}
-    
+
     <!-- Footer content and social icons on same line -->
     {footerEnabled && (
       <div class={`text-center ${showSocialIcons ? 'md:flex md:justify-between md:items-center' : ''}`}>
         <p class="text-xs text-primary-500 dark:text-primary-400" set:html={footerContent}>
         </p>
-        
+
         <!-- Desktop: Social icons on same line as footer content -->
         {showSocialIcons && (
           <div class="hidden md:flex items-center space-x-4">
@@ -110,7 +110,7 @@ const getProfilePictureClasses = (size: string, style: string) => {
         {showProfilePicture ? (
           <div class="flex justify-start">
             {profilePicture.url ? (
-              <a 
+              <a
                 href={profilePicture.url}
                 class="inline-block hover:opacity-80 transition-opacity"
                 target={profilePicture.url.startsWith('http') ? '_blank' : undefined}
@@ -131,7 +131,7 @@ const getProfilePictureClasses = (size: string, style: string) => {
             )}
           </div>
         ) : null}
-        
+
         <!-- Social icons: centered when no profile picture, or aligned when profile picture exists -->
         {showSocialIcons && (
           <div class={`flex items-center space-x-4 ${showProfilePicture ? 'hidden md:flex' : 'justify-center'}`}>

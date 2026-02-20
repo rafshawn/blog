@@ -113,16 +113,16 @@ const processedImage = (() => {
                 if (cleanImagePath.startsWith('[[') && cleanImagePath.endsWith(']]')) {
                   cleanImagePath = cleanImagePath.slice(2, -2);
                 }
-                
+
                 // Handle external URLs
                 if (cleanImagePath.startsWith('http')) {
                   return cleanImagePath;
                 }
-                
+
                 // Detect folder-based vs file-based: if image path starts with 'attachments/',
                 // it's a single-file post (shared attachments folder)
                 const isFileBased = cleanImagePath.startsWith('attachments/');
-                
+
                 if (isFileBased) {
                   // Single-file post - remove attachments/ prefix
                   cleanImagePath = cleanImagePath.replace('attachments/', '');
@@ -133,7 +133,7 @@ const processedImage = (() => {
                     cleanImagePath = cleanImagePath.replace(/^(images|attachments)\//, '');
                   }
                 }
-                
+
                 // Convert to WebP if applicable (sync-images.js creates WebP versions)
                 return getOptimizedFormat(cleanImagePath);
               })()}

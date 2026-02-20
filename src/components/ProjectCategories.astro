@@ -108,14 +108,14 @@ const sortedCategories = [...categories].sort();
   if (!(window as any).projectSelectedCategories) {
     (window as any).projectSelectedCategories = [];
   }
-  
+
   function initializeProjectCategoryFiltering() {
     // Find ALL categories containers (mobile and desktop)
     const categoriesContainers = document.querySelectorAll('.categories-container');
     if (categoriesContainers.length === 0) {
       return;
     }
-    
+
     const projectCards = document.querySelectorAll('[data-project-categories]');
     // Use persistent array for multi-select support
     const selectedCategories = (window as any).projectSelectedCategories as string[];
@@ -127,7 +127,7 @@ const sortedCategories = [...categories].sort();
         categoryItems.forEach(btn => {
           const btnCategory = btn.getAttribute('data-category');
           const isSelected = btnCategory && selectedCategories.includes(btnCategory);
-          
+
           if (isSelected) {
             btn.classList.remove('bg-primary-100', 'dark:bg-primary-800', 'text-primary-700', 'dark:text-primary-300');
             btn.classList.add('bg-highlight-100', 'dark:bg-highlight-900/40', 'text-highlight-800', 'dark:text-highlight-200', 'ring-1', 'ring-highlight-300', 'dark:ring-highlight-700');
@@ -141,7 +141,7 @@ const sortedCategories = [...categories].sort();
 
     // Initialize button states on page load (sync all containers)
     updateAllButtonStates();
-    
+
     // Helper function to filter project cards
     function filterProjectCards() {
       if (selectedCategories.length === 0) {
@@ -154,11 +154,11 @@ const sortedCategories = [...categories].sort();
         projectCards.forEach((card) => {
           const cardCategories = card.getAttribute('data-project-categories') || '';
           const categories = cardCategories.split(',').map(c => c.trim());
-          
-          const hasAllSelectedCategories = selectedCategories.every(selectedCat => 
+
+          const hasAllSelectedCategories = selectedCategories.every(selectedCat =>
             categories.includes(selectedCat)
           );
-          
+
           if (hasAllSelectedCategories) {
             card.classList.remove('project-card-hidden');
           } else {
@@ -174,7 +174,7 @@ const sortedCategories = [...categories].sort();
     // Initialize event listeners for ALL containers
     categoriesContainers.forEach(container => {
       const categoryItems = container.querySelectorAll('.category-item');
-      
+
       if (categoryItems.length === 0) {
         return;
       }
@@ -184,21 +184,21 @@ const sortedCategories = [...categories].sort();
         // Clone the element to remove all event listeners
         const newItem = item.cloneNode(true) as HTMLElement;
         item.parentNode?.replaceChild(newItem, item);
-        
+
         newItem.addEventListener('click', (e) => {
           e.preventDefault();
           e.stopPropagation();
-          
+
           const category = newItem.getAttribute('data-category');
-          
+
           // Visual feedback
           newItem.style.transform = 'scale(0.95)';
           setTimeout(() => {
             newItem.style.transform = '';
           }, 150);
-          
+
           if (!category) return;
-          
+
           // Toggle category in selection array
           const categoryIndex = selectedCategories.indexOf(category);
           if (categoryIndex > -1) {
@@ -208,10 +208,10 @@ const sortedCategories = [...categories].sort();
             // Add to selection
             selectedCategories.push(category);
           }
-          
+
           // Update ALL button states across ALL containers (mobile and desktop)
           updateAllButtonStates();
-        
+
         // Filter projects - show those matching ALL selected categories (AND logic)
         filterProjectCards();
 

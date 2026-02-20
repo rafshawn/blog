@@ -4,8 +4,8 @@ import Icon from './Icon.astro';
 ---
 
 <!-- Graph Modal Overlay -->
-<div 
-  id="graph-modal-overlay" 
+<div
+  id="graph-modal-overlay"
   class="fixed inset-0 z-50 hidden bg-black/50 backdrop-blur-sm animate-fade-in"
   role="dialog"
   aria-modal="true"
@@ -14,7 +14,7 @@ import Icon from './Icon.astro';
     <div class="relative w-full max-w-6xl h-[80vh] bg-white dark:bg-primary-900 rounded-xl shadow-2xl border border-primary-200 dark:border-primary-700 animate-scale-in">
 
       <!-- Close Button -->
-      <button 
+      <button
         id="graph-modal-close"
         class="absolute top-4 right-4 z-10 p-2 text-primary-500 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-200 transition-colors rounded-lg hover:bg-primary-100 dark:hover:bg-primary-800"
         aria-label="Close graph modal"
@@ -33,14 +33,14 @@ import Icon from './Icon.astro';
 <script>
   import * as d3 from "d3";
   import { getGraphThemeColors } from '@/utils/graph-theme-colors';
-  
+
   // Graph Modal Functionality
   let graphModalInitialized = false;
   let svg: d3.Selection<SVGSVGElement, undefined, null, undefined> | null = null;
   let simulation: d3.Simulation<any, any> | null = null;
   let cleanup: (() => void) | null = null;
   let hasFittedToGraph = false; // Prevent multiple fitToGraph calls
-  
+
   interface GraphNode {
     id: string;
     name: string;
@@ -63,20 +63,20 @@ import Icon from './Icon.astro';
     nodes: GraphNode[];
     links: GraphLink[];
   }
-  
+
   function createGraphModalHTML() {
     // Check if modal already exists
     if (document.getElementById('graph-modal-overlay')) {
       return;
     }
-    
+
     const modal = document.createElement('div');
     modal.id = 'graph-modal-overlay';
     modal.className = 'fixed inset-0 z-50 bg-black/50 backdrop-blur-sm animate-fade-in hidden';
     modal.innerHTML = `
       <div class="flex min-h-full items-center justify-center p-4">
         <div class="relative w-full max-w-7xl h-[90vh] bg-primary-50 dark:bg-primary-800 rounded-xl shadow-2xl border border-primary-200 dark:border-primary-700 animate-scale-in">
-          <button 
+          <button
             id="graph-modal-close"
             class="absolute top-4 right-4 z-10 p-2 text-primary-500 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-200 transition-colors rounded-lg hover:bg-primary-100 dark:hover:bg-primary-700"
             aria-label="Close"
@@ -103,7 +103,7 @@ import Icon from './Icon.astro';
     `;
     document.body.appendChild(modal);
   }
-  
+
   // Global modal functions that can be called from anywhere
   function openModal() {
     const overlay = document.getElementById('graph-modal-overlay') as HTMLElement;
@@ -115,7 +115,7 @@ import Icon from './Icon.astro';
       }, 100);
       return;
     }
-    
+
     overlay.classList.remove('hidden');
     overlay.style.display = 'block';
     overlay.style.visibility = 'visible';
@@ -128,17 +128,17 @@ import Icon from './Icon.astro';
     overlay.style.height = '100vh';
     overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
     document.body.style.overflow = 'hidden';
-    
+
     // Reset the fitToGraph flag when opening
     hasFittedToGraph = false;
-    
+
     loadGraphData();
   }
 
   function closeModal() {
     const overlay = document.getElementById('graph-modal-overlay') as HTMLElement;
     if (!overlay) return;
-    
+
     overlay.classList.add('hidden');
     // Reset all inline styles
     overlay.style.display = '';
@@ -152,10 +152,10 @@ import Icon from './Icon.astro';
     overlay.style.height = '';
     overlay.style.backgroundColor = '';
     document.body.style.overflow = '';
-    
+
     // Reset fitToGraph flag
     hasFittedToGraph = false;
-    
+
     // Clean up D3 graph
     if (cleanup) {
       cleanup();
@@ -173,19 +173,19 @@ import Icon from './Icon.astro';
     const closeButton = document.getElementById('graph-modal-close') as HTMLButtonElement;
     const overlay = document.getElementById('graph-modal-overlay') as HTMLElement;
     const graphContainer = document.getElementById('graph-modal-container') as HTMLElement;
-    
+
     if (closeButton) {
       // Remove existing listeners by removing and re-adding the event listener
       closeButton.removeEventListener('click', closeModal);
       closeButton.addEventListener('click', closeModal);
     }
-    
+
     if (overlay) {
       // Remove existing listeners by removing and re-adding the event listener
       overlay.removeEventListener('click', handleOverlayClick);
       overlay.addEventListener('click', handleOverlayClick);
     }
-    
+
     if (graphContainer) {
       // Prevent clicks on the graph container from bubbling up to the overlay
       graphContainer.removeEventListener('click', handleGraphContainerClick);
@@ -197,7 +197,7 @@ import Icon from './Icon.astro';
     const overlay = e.target as HTMLElement;
     const modalContent = overlay.querySelector('.relative');
     const graphContainer = overlay.querySelector('#graph-modal-container');
-    
+
     // Only close if clicking on the overlay itself, not on the modal content or graph
     if (e.target === overlay && !modalContent?.contains(e.target as Node) && !graphContainer?.contains(e.target as Node)) {
       closeModal();
@@ -209,7 +209,7 @@ import Icon from './Icon.astro';
     if (!container) {
       return;
     }
-    
+
     // Show loading state immediately
     container.innerHTML = `
       <div class="flex items-center justify-center h-full text-primary-500 dark:text-primary-400">
@@ -266,10 +266,10 @@ import Icon from './Icon.astro';
     const height = container.offsetHeight;
     const radiusForce = 300;
     let wasDragged = false;
-    
+
     // Clear container
     container.innerHTML = '';
-    
+
     const links = data.links.map((d) => ({ ...d }));
     const nodes = data.nodes.map((d) => ({ ...d }));
 
@@ -324,11 +324,11 @@ import Icon from './Icon.astro';
       .on("zoom", (event) => {
         // Direct transform - no throttling or delays
         containerGroup.attr("transform", event.transform);
-        
+
         // Hide/show labels based on zoom level
         const scale = event.transform.k;
         const labelThreshold = 0.6; // Hide labels when zoomed out beyond this threshold
-        
+
         if (scale < labelThreshold) {
           // Hide all labels when zoomed out
           labels.style("opacity", 0);
@@ -386,7 +386,7 @@ import Icon from './Icon.astro';
           if (!wasDragged && d.slug) {
             // Close modal first
             closeModal();
-            
+
             // Use Swup for navigation if available
             if ((window as any).swup) {
               // Ensure local graph is reset before navigation
@@ -399,7 +399,7 @@ import Icon from './Icon.astro';
             }
           }
         });
-        
+
       // Build neighbor map for hover effects
       const neighbors = new Map<string, Set<string>>();
       for (const link of links) {
@@ -428,13 +428,13 @@ import Icon from './Icon.astro';
             .transition()
             .duration(150)
             .attr("stroke", (l: any) =>
-              (typeof l.source === 'object' ? l.source.id : l.source) === d.id || 
+              (typeof l.source === 'object' ? l.source.id : l.source) === d.id ||
               (typeof l.target === 'object' ? l.target.id : l.target) === d.id
                 ? colors.tagFill
                 : colors.linkStroke,
             )
             .attr("stroke-opacity", (l: any) =>
-              (typeof l.source === 'object' ? l.source.id : l.source) === d.id || 
+              (typeof l.source === 'object' ? l.source.id : l.source) === d.id ||
               (typeof l.target === 'object' ? l.target.id : l.target) === d.id ? 0.8 : 0.1,
             );
 
@@ -450,7 +450,7 @@ import Icon from './Icon.astro';
           const currentTransform = d3.zoomTransform(svg.node() as Element);
           const scale = currentTransform.k;
           const labelThreshold = 0.6;
-          
+
           if (scale < labelThreshold) {
             // When zoomed out, only show the hovered node's label at large size
             labels
@@ -463,7 +463,7 @@ import Icon from './Icon.astro';
             // When zoomed in, check if we need to enlarge hovered text
             const minHoverSize = 18; // Minimum size for hovered text
             const currentTextSize = 12 * scale; // Current effective text size
-            
+
             labels
               .transition()
               .duration(150)
@@ -511,7 +511,7 @@ import Icon from './Icon.astro';
           const currentTransform = d3.zoomTransform(svg.node() as Element);
           const scale = currentTransform.k;
           const labelThreshold = 0.6;
-          
+
           if (scale < labelThreshold) {
             // When zoomed out, hide all labels and reset font properties
             labels
@@ -524,7 +524,7 @@ import Icon from './Icon.astro';
             // When zoomed in, show all labels with appropriate opacity based on text size
             const minHoverSize = 18; // Same threshold as hover logic
             const currentTextSize = 12 * scale; // Current effective text size
-            
+
             labels
               .transition()
               .duration(150)
@@ -602,11 +602,11 @@ import Icon from './Icon.astro';
                 const svgRect = svgNode.getBoundingClientRect();
                 const width = svgRect.width;
                 const height = svgRect.height;
-                
+
                 // Get all nodes to calculate bounds
                 const nodes = svg.selectAll('g[data-id]').nodes();
                 if (nodes.length === 0) return;
-                
+
                 // Calculate bounding box of all nodes
                 let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
                 nodes.forEach((node) => {
@@ -625,26 +625,26 @@ import Icon from './Icon.astro';
                     }
                   }
                 });
-                
+
                 // Add padding
                 const padding = 50;
                 const boundsWidth = maxX - minX + padding * 2;
                 const boundsHeight = maxY - minY + padding * 2;
-                
+
                 // Calculate scale to fit viewport
                 const scaleX = width / boundsWidth;
                 const scaleY = height / boundsHeight;
                 const scale = Math.min(scaleX, scaleY); // Allow zoom out (scale < 1)
-                
+
                 // Constrain scale to reasonable bounds (0.1 to 3)
                 const constrainedScale = Math.max(0.1, Math.min(3, scale));
-                
+
                 // Calculate translation to center
                 const graphCenterX = (minX + maxX) / 2;
                 const graphCenterY = (minY + maxY) / 2;
                 const centerX = (width / 2) / constrainedScale - graphCenterX;
                 const centerY = (height / 2) / constrainedScale - graphCenterY;
-                
+
                 svg.transition().duration(300).call(
                   zoom.transform as any,
                   d3.zoomIdentity.scale(constrainedScale).translate(centerX, centerY)
@@ -654,9 +654,9 @@ import Icon from './Icon.astro';
           }
         }
       };
-      
+
       document.addEventListener('keydown', handleKeyDown);
-      
+
       // Update cleanup function
       const originalCleanup = cleanup;
       cleanup = () => {
@@ -669,11 +669,11 @@ import Icon from './Icon.astro';
         if (!svgElement) {
           return;
         }
-        
+
         // Instead of fitting nodes, zoom OUT to show the entire graph area
         // Use a small scale to zoom OUT and show everything
         const scale = 0.3; // Zoom OUT to 30% (much smaller)
-        
+
         // Center the graph in the viewport
         const x = (width / 2) - (width / 2 * scale);
         const y = (height / 2) - (height / 2 * scale);
@@ -705,7 +705,7 @@ import Icon from './Icon.astro';
     const overlay = document.getElementById('graph-modal-overlay') as HTMLElement;
     const closeButton = document.getElementById('graph-modal-close') as HTMLButtonElement;
     const container = document.getElementById('graph-modal-container') as HTMLElement;
-    
+
     if (!overlay || !closeButton || !container) {
       // Create the modal HTML if it doesn't exist
       createGraphModalHTML();
@@ -715,7 +715,7 @@ import Icon from './Icon.astro';
       }, 100);
       return;
     }
-    
+
     // Always ensure the modal functions are available, even if already initialized
     if (graphModalInitialized) {
       // Make sure the functions are still available
@@ -725,7 +725,7 @@ import Icon from './Icon.astro';
       attachEventListeners();
       return;
     }
-    
+
     graphModalInitialized = true;
 
     // Attach event listeners
@@ -770,7 +770,7 @@ import Icon from './Icon.astro';
       // Always try to reinitialize to ensure it's available
       initializeGraphModal();
     });
-    
+
     (window as any).swup.hooks.on('visit:end', () => {
       // Ensure the global function is available after page transitions
       if (!(window as any).openGraphModal) {

@@ -21,12 +21,12 @@ interface Props {
   densities?: number[];
 }
 
-const { 
-  id, 
-  src, 
-  alt = "", 
+const {
+  id,
+  src,
+  alt = "",
   caption,
-  position = "center", 
+  position = "center",
   basePath = "/",
   width = 800,
   height = 450,
@@ -54,9 +54,9 @@ if (cleanSrc.startsWith('[[') && cleanSrc.endsWith(']]')) {
 // For folder-based content, if basePath indicates a synced folder, treat as local for optimization
 // Also treat global attachments directories as synced folders for Astro Image optimization
 const isSyncedFolder = basePath && basePath.includes('/') && (
-  !basePath.endsWith('/attachments/') || 
-  basePath === '/posts/attachments/' || 
-  basePath === '/projects/attachments/' || 
+  !basePath.endsWith('/attachments/') ||
+  basePath === '/posts/attachments/' ||
+  basePath === '/projects/attachments/' ||
   basePath === '/docs/attachments/' ||
   basePath === '/pages/attachments/' ||
   basePath === '/special/attachments/'
@@ -79,49 +79,49 @@ if (isLocal) {
     const files = import.meta.glob<ImageMetadata>("/public/**", {
       import: "default",
     });
-    
+
     // Remove leading "./" if present for folder-based posts
     if (cleanSrc.startsWith('./')) {
       cleanSrc = cleanSrc.slice(2);
     }
-    
+
     // Remove leading "images/" if present since basePath already includes it
     // But only for global images, not folder-based images
     if (cleanSrc.startsWith('images/') && (basePath === '/posts/attachments/' || basePath === '/projects/attachments/' || basePath === '/docs/attachments/' || basePath === '/pages/attachments/' || basePath === '/special/attachments/')) {
       cleanSrc = cleanSrc.slice(7);
     }
-    
+
     // For folder-based content, if basePath already includes 'images/' and cleanSrc starts with 'images/',
     // remove the prefix from cleanSrc to avoid double 'images/'
     if (cleanSrc.startsWith('images/') && basePath.includes('/attachments/') && basePath !== '/posts/attachments/' && basePath !== '/projects/attachments/' && basePath !== '/docs/attachments/' && basePath !== '/pages/attachments/' && basePath !== '/special/attachments/') {
       cleanSrc = cleanSrc.slice(7);
     }
-    
+
     // For content with attachments/ prefix, remove it since the sync script already handles this
     if (cleanSrc.startsWith('attachments/') && basePath.includes('/projects/') && !basePath.includes('/attachments/')) {
       cleanSrc = cleanSrc.slice(12); // Remove 'attachments/' prefix
     }
-    
+
     // For single-file projects, also remove attachments/ prefix when using global attachments directory
     if (cleanSrc.startsWith('attachments/') && basePath === '/projects/attachments/') {
       cleanSrc = cleanSrc.slice(12); // Remove 'attachments/' prefix
     }
-    
+
     // Normalize the path for the glob pattern
     let normalizedPath = path
       .normalize(path.join("/public", basePath, cleanSrc))
       .replace(/\\/g, "/");
-    
+
     // Ensure the path starts with /public
     if (!normalizedPath.startsWith("/public")) {
       normalizedPath = `/public${normalizedPath}`;
     }
-    
+
     // Debug logging
     if (isDev && devConfig.images.logMissingImages) {
       // Debug logging removed for production
     }
-    
+
     const file = files[normalizedPath];
     if (file) {
       img = await file();
@@ -141,14 +141,14 @@ const imageStyle = `object-position: ${position}`;
 
 <div id={id} class:list={[className, 'overflow-hidden relative']}>
   {isLocal && img ? (
-    <Image 
-      src={img} 
-      alt={alt} 
+    <Image
+      src={img}
+      alt={alt}
       width={width}
       height={height}
       format={format}
       quality={quality}
-      class={imageClass} 
+      class={imageClass}
       style={imageStyle}
       loading={loading}
       decoding={decoding}
@@ -156,10 +156,10 @@ const imageStyle = `object-position: ${position}`;
       densities={densities}
     />
   ) : isPublic ? (
-    <img 
-      src={isSyncedFolder ? `${basePath}${cleanSrc}` : cleanSrc} 
-      alt={alt} 
-      class={imageClass} 
+    <img
+      src={isSyncedFolder ? `${basePath}${cleanSrc}` : cleanSrc}
+      alt={alt}
+      class={imageClass}
       style={imageStyle}
       loading={loading}
       decoding={decoding}
@@ -171,10 +171,10 @@ const imageStyle = `object-position: ${position}`;
     // Don't render anything for missing local images
     null
   ) : (
-    <img 
-      src={cleanSrc} 
-      alt={alt} 
-      class={imageClass} 
+    <img
+      src={cleanSrc}
+      alt={alt}
+      class={imageClass}
       style={imageStyle}
       loading={loading}
       decoding={decoding}
@@ -183,7 +183,7 @@ const imageStyle = `object-position: ${position}`;
       height={height}
     />
   )}
-  
+
   {caption && (
     <figcaption class="mt-2 text-sm text-primary-600 dark:text-primary-400 text-center italic">
       {caption}

@@ -21,9 +21,9 @@ if (!currentCategory || currentCategory.trim() === '' || currentCategory === 'Ge
 } else {
   // Filter by category - handle "Unsorted" specially
   if (currentCategory === 'Unsorted') {
-    filteredDocs = allDocs.filter(doc => 
-      !doc.data.category || 
-      doc.data.category.trim() === '' || 
+    filteredDocs = allDocs.filter(doc =>
+      !doc.data.category ||
+      doc.data.category.trim() === '' ||
       doc.data.category === 'General'
     );
   } else {

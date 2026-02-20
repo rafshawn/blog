@@ -22,8 +22,8 @@ const hasShortcut = siteConfig.commandPalette.shortcut && siteConfig.commandPale
 const shortcutKey = hasShortcut ? siteConfig.commandPalette.shortcut.split('+').pop()?.toUpperCase() || 'K' : '';
 
 // Check if all command palette sections are disabled
-const allSectionsDisabled = !siteConfig.commandPalette.sections.quickActions && 
-                            !siteConfig.commandPalette.sections.pages && 
+const allSectionsDisabled = !siteConfig.commandPalette.sections.quickActions &&
+                            !siteConfig.commandPalette.sections.pages &&
                             !siteConfig.commandPalette.sections.social;
 
 // Choose icon based on whether all sections are disabled (for no shortcut case)
@@ -51,25 +51,25 @@ const paletteIcon = allSectionsDisabled ? 'search' : 'command';
       </div>
 
       <!-- Center area with smart navigation -->
-      <div class={`flex-1 flex items-center ${ siteConfig.navigation.style === 'minimal' ? 'justify-end' : 'justify-center' }`}> 
+      <div class={`flex-1 flex items-center ${ siteConfig.navigation.style === 'minimal' ? 'justify-end' : 'justify-center' }`}>
         <!-- Smart Navigation (single system with style variants) -->
-        {siteConfig.navigation.showNavigation && (  
-    <nav class={`hidden md:flex items-center ${  
+        {siteConfig.navigation.showNavigation && (
+    <nav class={`hidden md:flex items-center ${
       siteConfig.navigation.style === 'minimal' ? `space-x-5 ${siteConfig.featureButton === 'none' && !siteConfig.commandPalette.enabled ? '' : 'mr-4'}` : 'space-x-5' }`} aria-label="Main navigation">
             {siteConfig.navigation.pages.map((page, index) => {
               const hasChildren = page.children && page.children.length > 0;
               const hasUrl = page.url && page.url.trim() !== '';
-              
+
               if (hasChildren) {
                 // Parent item with children - dropdown menu
                 return (
                   <div class="relative nav-dropdown-container" data-nav-index={index}>
                     {hasUrl ? (
                       // Clickable parent with dropdown
-                      <a 
+                      <a
                         href={page.url}
                         class={
-                          siteConfig.navigation.style === 'minimal' 
+                          siteConfig.navigation.style === 'minimal'
                             ? `flex items-center space-x-1 text-xs font-normal transition-colors hover:text-highlight-600 dark:hover:text-highlight-400 text-primary-500 dark:text-primary-400`
                             : `flex items-center space-x-1 text-sm font-medium transition-colors hover:text-highlight-600 dark:hover:text-highlight-400 text-primary-600 dark:text-primary-300`
                         }
@@ -88,7 +88,7 @@ const paletteIcon = allSectionsDisabled ? 'search' : 'command';
                       // Dropdown-only parent (non-clickable trigger)
                       <button
                         class={
-                          siteConfig.navigation.style === 'minimal' 
+                          siteConfig.navigation.style === 'minimal'
                             ? `flex items-center space-x-1 text-xs font-normal transition-colors hover:text-highlight-600 dark:hover:text-highlight-400 text-primary-500 dark:text-primary-400`
                             : `flex items-center space-x-1 text-sm font-medium transition-colors hover:text-highlight-600 dark:hover:text-highlight-400 text-primary-600 dark:text-primary-300`
                         }
@@ -121,10 +121,10 @@ const paletteIcon = allSectionsDisabled ? 'search' : 'command';
               } else {
                 // Regular navigation item without children
                 return (
-                  <a 
+                  <a
                     href={page.url || '#'}
                     class={
-                      siteConfig.navigation.style === 'minimal' 
+                      siteConfig.navigation.style === 'minimal'
                         ? `flex items-center space-x-1 text-xs font-normal transition-colors hover:text-highlight-600 dark:hover:text-highlight-400 text-primary-500 dark:text-primary-400`
                         : `flex items-center space-x-1 text-sm font-medium transition-colors hover:text-highlight-600 dark:hover:text-highlight-400 text-primary-600 dark:text-primary-300`
                     }
@@ -213,7 +213,7 @@ const paletteIcon = allSectionsDisabled ? 'search' : 'command';
           {siteConfig.navigation.pages.map((page, index) => {
             const hasChildren = page.children && page.children.length > 0;
             const hasUrl = page.url && page.url.trim() !== '';
-            
+
             if (hasChildren) {
               // Parent item with children - accordion
               return (
@@ -221,7 +221,7 @@ const paletteIcon = allSectionsDisabled ? 'search' : 'command';
                   <div class="flex items-center justify-between">
                     {hasUrl ? (
                       // Clickable parent with expand button
-                      <a 
+                      <a
                         href={page.url}
                         class="flex-1 flex items-center justify-between px-3 py-2 text-primary-600 dark:text-primary-300 hover:text-highlight-600 dark:hover:text-highlight-400 hover:bg-primary-50 dark:hover:bg-primary-800 transition-colors font-medium rounded-md"
                         target={page.url.startsWith('http') ? '_blank' : undefined}
@@ -268,7 +268,7 @@ const paletteIcon = allSectionsDisabled ? 'search' : 'command';
             } else {
               // Regular navigation item without children
               return (
-                <a 
+                <a
                   href={page.url || '#'}
                   class="flex items-center justify-between px-3 py-2 text-primary-600 dark:text-primary-300 hover:text-highlight-600 dark:hover:text-highlight-400 hover:bg-primary-50 dark:hover:bg-primary-800 transition-colors font-medium rounded-md"
                   target={page.url?.startsWith('http') ? '_blank' : undefined}
@@ -322,7 +322,7 @@ const paletteIcon = allSectionsDisabled ? 'search' : 'command';
     dropdownContainers.forEach(container => {
       const trigger = container.querySelector('a, button');
       const dropdown = container.querySelector('.nav-dropdown-menu') as HTMLElement;
-      
+
       if (!trigger || !dropdown) return;
 
       const showDropdown = () => {
@@ -369,11 +369,11 @@ const paletteIcon = allSectionsDisabled ? 'search' : 'command';
         const parent = toggle.closest('.mobile-nav-parent');
         const children = parent?.querySelector('.mobile-nav-children') as HTMLElement;
         const icon = toggle.querySelector('svg');
-        
+
         if (!children || !icon) return;
 
         const isExpanded = !children.classList.contains('hidden');
-        
+
         if (isExpanded) {
           children.classList.add('hidden');
           icon.classList.remove('rotate-180');
@@ -390,7 +390,7 @@ const paletteIcon = allSectionsDisabled ? 'search' : 'command';
     function closeMobileMenu() {
       if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
         mobileMenu.classList.add('hidden');
-        
+
         // Update menu icon and ARIA attribute
         if (menuToggle) {
           const menuIcon = menuToggle.querySelector('.menu-icon');
@@ -420,7 +420,7 @@ const paletteIcon = allSectionsDisabled ? 'search' : 'command';
       const target = e.target as HTMLElement;
       const isMenuToggle = target.closest('#mobile-menu-toggle');
       const isMobileMenu = target.closest('#mobile-menu');
-      
+
       // If clicking outside the menu and toggle button, close the menu
       if (!isMenuToggle && !isMobileMenu && mobileMenu && !mobileMenu.classList.contains('hidden')) {
         closeMobileMenu();
@@ -468,12 +468,12 @@ const paletteIcon = allSectionsDisabled ? 'search' : 'command';
       headerThemeButton.addEventListener('click', () => {
         // Check if command palette is enabled
         const commandPaletteEnabled = (window as any).siteConfig?.commandPalette?.enabled;
-        
+
         if (commandPaletteEnabled) {
           // Use command palette for theme selection
           const event = new CustomEvent('openCommandPalette');
           window.dispatchEvent(event);
-          
+
           // After a brief delay, trigger theme selection
           setTimeout(() => {
             const commandPalette = (window as any).commandPaletteInstance;
@@ -495,12 +495,12 @@ const paletteIcon = allSectionsDisabled ? 'search' : 'command';
     const header = document.getElementById('main-header');
     if (header) {
       let isScrolled = false;
-      
-      
+
+
       const updateHeaderShadow = () => {
         const scrollY = window.scrollY;
         const shouldHaveShadow = scrollY > 0;
-        
+
         if (shouldHaveShadow !== isScrolled) {
           isScrolled = shouldHaveShadow;
           if (shouldHaveShadow) {
@@ -513,7 +513,7 @@ const paletteIcon = allSectionsDisabled ? 'search' : 'command';
 
       // Initial check
       updateHeaderShadow();
-      
+
       // Listen for scroll events
       window.addEventListener('scroll', updateHeaderShadow, { passive: true });
     }

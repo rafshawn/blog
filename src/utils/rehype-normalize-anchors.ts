@@ -12,21 +12,21 @@ export function rehypeNormalizeAnchors() {
         // Skip heading anchor links (created by rehypeAutolinkHeadings)
         // These have the 'anchor-link' class and shouldn't get wikilink styling
         const className = node.properties?.className;
-        
+
         // Check for anchor-link class (array or string format)
         let hasAnchorLinkClass = false;
         if (Array.isArray(className)) {
-          hasAnchorLinkClass = className.some((c: any) => 
+          hasAnchorLinkClass = className.some((c: any) =>
             typeof c === 'string' && c.includes('anchor-link')
           );
         } else if (typeof className === 'string') {
           hasAnchorLinkClass = className.includes('anchor-link');
         }
-        
+
         if (hasAnchorLinkClass) {
           return; // Skip this link - it's a heading anchor link
         }
-        
+
         // Also check if parent is a heading element
         if (parent && typeof parent === 'object' && 'tagName' in parent) {
           const parentTag = String(parent.tagName || '').toLowerCase();
@@ -34,19 +34,19 @@ export function rehypeNormalizeAnchors() {
             return; // Skip this link - it's inside a heading
           }
         }
-        
+
         // Get href from properties - could be string or array
         const hrefValue = node.properties?.href;
         let href: string | null = null;
-        
+
         if (typeof hrefValue === 'string') {
           href = hrefValue;
         } else if (Array.isArray(hrefValue) && hrefValue.length > 0 && typeof hrefValue[0] === 'string') {
           href = hrefValue[0];
         }
-        
+
         if (!href) return;
-        
+
         // Handle same-page anchor links (href starts with #)
         if (href.startsWith('#') && href.length > 1) {
           // Final safety check: skip if parent is a heading
@@ -56,9 +56,9 @@ export function rehypeNormalizeAnchors() {
               return; // Skip - this is a heading anchor link
             }
           }
-          
+
           let anchorText = href.substring(1);
-          
+
           // Always normalize - decode URL-encoded characters if present
           try {
             const decoded = decodeURIComponent(anchorText);
@@ -69,7 +69,7 @@ export function rehypeNormalizeAnchors() {
           } catch {
             // If decoding fails, use as-is
           }
-          
+
           // Create slug from decoded/normalized text
           const anchorSlug = anchorText
             .toLowerCase()
@@ -77,16 +77,16 @@ export function rehypeNormalizeAnchors() {
             .replace(/\s+/g, "-")
             .replace(/-+/g, "-")
             .replace(/^-+|-+$/g, "");
-          
+
           // Ensure properties exists
           if (!node.properties) {
             node.properties = {};
           }
-          
+
           // Set the normalized href
           const normalizedHref = `#${anchorSlug}`;
           node.properties.href = normalizedHref;
-          
+
           // CRITICAL: ALWAYS add wikilink class
           // Preserve existing className if present (from remark), then add wikilink
           let existingClasses: string[] = [];
@@ -97,12 +97,12 @@ export function rehypeNormalizeAnchors() {
               existingClasses = node.properties.className.split(/\s+/).filter(Boolean);
             }
           }
-          
+
           // Add wikilink if not already present
           if (!existingClasses.includes('wikilink')) {
             existingClasses.push('wikilink');
           }
-          
+
           // Set as string (required for HTML)
           node.properties.className = existingClasses.join(' ');
         }

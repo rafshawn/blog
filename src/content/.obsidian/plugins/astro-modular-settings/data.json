@@ -65,10 +65,6 @@
             "url": "/resume"
           }
         ]
-      },
-      {
-        "title": "turmi.nl",
-        "url": "https://turmi.nl/"
       }
     ],
     "social": [
@@ -189,8 +185,8 @@
     }
   },
   "typography": {
-    "headingFont": "Space Mono",
-    "proseFont": "Plus Jakarta Sans",
+    "headingFont": "Stack Sans Headline",
+    "proseFont": "Barlow",
     "monoFont": "JetBrains Mono",
     "fontSource": "cdn",
     "fontDisplay": "swap",

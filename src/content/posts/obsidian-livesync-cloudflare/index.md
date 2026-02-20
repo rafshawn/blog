@@ -5,7 +5,7 @@ description: Syncing Obsidian notes with R2 Object Storage
 tags:
   - cloudflare
   - obsidian
-image: ""
+image:
 imageAlt: ""
 imageOG: false
 hideCoverImage: false
@@ -42,7 +42,7 @@ It's not to say that you're stuck with no syncing options.
 	- Your **access key ID** and **secret key** will only appear once, so make sure to securely note these down.
 
 ![cloudflare|300](cloudflare.png)
-![cloudflare-token|650](cloudflare-token.png)
+![cloudflare-token](cloudflare-token.png)
 
 5. Now head back to your bucket and head into **Settings** to configure the **CORS Policy**
 	- You need to set this up, otherwise you will run into a sync error.
@@ -101,7 +101,7 @@ If you didn't already enable E2E encryption, I suggest setting this up. You can 
 
 Head to the **🔄 Sync Settings** tab and choose a sync preset. You can either do **LiveSync**, meaning all changes are sync on file save, or **Periodic w/ Batch**, so your vault syncs every given interval.
 
-![sync-settings|450](sync-settings.png)
+![sync-settings|500](sync-settings.png)
 
 You can also enable **Advanced Settings** via the **🧙‍♂ Setup** tab. This opens up new options, most notably [[#Customization Sync]].
 ## Syncing to a new device

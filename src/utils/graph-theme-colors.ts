@@ -11,11 +11,11 @@ export interface GraphThemeColors {
   tagFill: string;
   tagStroke: string;
   tagText: string;
-  
+
   // Link colors
   linkStroke: string;
   highlight: string;
-  
+
   // Background colors
   background: string;
   backgroundSecondary: string;
@@ -29,12 +29,12 @@ export function getGraphThemeColors(): GraphThemeColors {
   const root = document.documentElement;
   const computedStyle = getComputedStyle(root);
   const isDarkMode = document.documentElement.classList.contains('dark');
-  
+
   // Get CSS custom properties with fallbacks
   const getCSSVar = (varName: string, fallback: string): string => {
     const value = computedStyle.getPropertyValue(varName).trim();
     if (!value) return fallback;
-    
+
     // Convert RGB format (e.g., "255 255 255") to hex format
     if (value.includes(' ')) {
       const rgbValues = value.split(' ').map(v => parseInt(v.trim()));
@@ -43,15 +43,15 @@ export function getGraphThemeColors(): GraphThemeColors {
         return `#${hex}`;
       }
     }
-    
+
     return value;
   };
-  
+
   // Theme-aware color fallbacks
   const fallbacks = {
     light: {
       postFill: '#64748b',
-      postStroke: '#475569', 
+      postStroke: '#475569',
       postText: '#1e293b',
       tagFill: '#0284c7',
       tagStroke: '#0369a1',
@@ -64,7 +64,7 @@ export function getGraphThemeColors(): GraphThemeColors {
     dark: {
       postFill: '#e2e8f0',
       postStroke: '#cbd5e1',
-      postText: '#f1f5f9', 
+      postText: '#f1f5f9',
       tagFill: '#38bdf8',
       tagStroke: '#0284c7',
       tagText: '#f1f5f9',
@@ -74,33 +74,33 @@ export function getGraphThemeColors(): GraphThemeColors {
       backgroundSecondary: '#334155'
     }
   };
-  
+
   const currentFallbacks = isDarkMode ? fallbacks.dark : fallbacks.light;
-  
+
   return {
     // Post node colors
     postFill: getCSSVar('--color-primary-500', currentFallbacks.postFill),
     postStroke: getCSSVar('--color-primary-600', currentFallbacks.postStroke),
-    postText: isDarkMode 
+    postText: isDarkMode
       ? getCSSVar('--color-primary-50', currentFallbacks.postText)
       : getCSSVar('--color-primary-900', currentFallbacks.postText),
-    
-    // Tag node colors  
+
+    // Tag node colors
     tagFill: getCSSVar('--color-highlight-400', currentFallbacks.tagFill),
     tagStroke: getCSSVar('--color-highlight-600', currentFallbacks.tagStroke),
-    tagText: isDarkMode 
+    tagText: isDarkMode
       ? getCSSVar('--color-primary-50', currentFallbacks.tagText)
       : getCSSVar('--color-primary-900', currentFallbacks.tagText),
-    
+
     // Link colors
     linkStroke: getCSSVar('--color-primary-400', currentFallbacks.linkStroke),
     highlight: getCSSVar('--color-highlight-500', currentFallbacks.highlight),
-    
+
     // Background colors
-    background: isDarkMode 
+    background: isDarkMode
       ? getCSSVar('--color-primary-800', currentFallbacks.background)
       : getCSSVar('--color-primary-50', currentFallbacks.background),
-    backgroundSecondary: isDarkMode 
+    backgroundSecondary: isDarkMode
       ? getCSSVar('--color-primary-700', currentFallbacks.backgroundSecondary)
       : getCSSVar('--color-primary-100', currentFallbacks.backgroundSecondary)
   };
@@ -142,9 +142,9 @@ export function rgbToHex(r: number, g: number, b: number): string {
 export function getContrastingTextColor(backgroundColor: string): string {
   const rgb = hexToRgb(backgroundColor);
   if (!rgb) return '#000000';
-  
+
   // Calculate luminance
   const luminance = (0.299 * rgb.r + 0.587 * rgb.g + 0.114 * rgb.b) / 255;
-  
+
   return luminance > 0.5 ? '#000000' : '#ffffff';
 }

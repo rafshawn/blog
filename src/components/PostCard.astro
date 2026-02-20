@@ -23,26 +23,26 @@ const { title, description, date, tags, image: rawImage, imageAlt } = post.data;
 // Process Obsidian bracket syntax in image field
 const image = (() => {
   if (!rawImage) return rawImage;
-  
+
   // Handle case where rawImage is an array (unquoted YAML syntax)
   let imageValue = rawImage;
   if (Array.isArray(rawImage)) {
     // If it's an array, take the first element
     imageValue = rawImage[0];
   }
-  
+
   // Ensure imageValue is a string before calling string methods
   if (typeof imageValue !== 'string') {
     console.warn('PostCard: imageValue is not a string:', imageValue);
     return imageValue;
   }
-  
+
   // Check if it's Obsidian double bracket syntax
   if (imageValue.startsWith('[[') && imageValue.endsWith(']]')) {
     // Extract the content inside the double brackets
     return imageValue.slice(2, -2);
   }
-  
+
   return imageValue;
 })();
 
@@ -87,16 +87,16 @@ const shouldShowCoverImage = (() => {
             if (cleanImagePath.startsWith('[[') && cleanImagePath.endsWith(']]')) {
               cleanImagePath = cleanImagePath.slice(2, -2);
             }
-            
+
             // Handle external URLs
             if (cleanImagePath.startsWith('http')) {
               return cleanImagePath;
             }
-            
+
             // Detect folder-based vs file-based: if image path starts with 'attachments/',
             // it's a single-file post (shared attachments folder)
             const isFileBased = cleanImagePath.startsWith('attachments/');
-            
+
             if (isFileBased) {
               // Single-file post - remove attachments/ prefix
               cleanImagePath = cleanImagePath.replace('attachments/', '');
@@ -107,7 +107,7 @@ const shouldShowCoverImage = (() => {
                 cleanImagePath = cleanImagePath.replace(/^(images|attachments)\//, '');
               }
             }
-            
+
             // Convert to WebP if applicable (sync-images.js creates WebP versions)
             return getOptimizedFormat(cleanImagePath);
           })()}
@@ -116,20 +116,20 @@ const shouldShowCoverImage = (() => {
             if (typeof image === 'string' && image.startsWith('http')) {
               return '';
             }
-            
+
             // 2. Clean the image path to check for attachments/ prefix
             let cleanImagePath = image;
             if (typeof cleanImagePath === 'string' && cleanImagePath.startsWith('[[') && cleanImagePath.endsWith(']]')) {
               cleanImagePath = cleanImagePath.slice(2, -2);
             }
-            
+
             // 3. Detect folder-based vs file-based: if image path starts with 'attachments/',
             // it's a single-file post (shared attachments folder)
             if (typeof cleanImagePath === 'string' && cleanImagePath.startsWith('attachments/')) {
               // Single-file post with image in attachments folder
               return '/posts/attachments/';
             }
-            
+
             // 4. Folder-based post - sync script copies images to post folder root
             // Safety check: ensure post.id exists before using it
             if (post.id) {
@@ -205,7 +205,7 @@ const shouldShowCoverImage = (() => {
             </a>
           ))}
           {tags.length > 3 && (
-            <span 
+            <span
               class="inline-block text-xs text-primary-500 dark:text-primary-400 bg-primary-50 dark:bg-primary-800 px-2.5 py-1 rounded-full border border-primary-200 dark:border-primary-700 mr-2 mb-1"
               aria-label={`${tags.length - 3} more tags available`}
             >

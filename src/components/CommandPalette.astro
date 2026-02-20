@@ -12,8 +12,8 @@ import Icon from './Icon.astro';
 </script>
 
 <!-- Command Palette Overlay -->
-<div 
-  id="command-palette-overlay" 
+<div
+  id="command-palette-overlay"
   class="fixed inset-0 z-50 hidden bg-black/50 backdrop-blur-sm animate-fade-in"
   role="dialog"
   aria-modal="true"
@@ -26,7 +26,7 @@ import Icon from './Icon.astro';
         <h2 id="command-palette-title" class="text-lg font-semibold text-primary-900 dark:text-primary-50">
           Command Palette
         </h2>
-        <button 
+        <button
           id="command-palette-close"
           class="p-1 text-primary-500 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-200 transition-colors"
           aria-label="Close command palette"
@@ -77,16 +77,16 @@ import Icon from './Icon.astro';
         <!-- Default items (shown when no search) -->
         <div id="command-palette-default" class="divide-y divide-primary-200 dark:divide-primary-700">
           <!-- Quick Actions -->
-          {siteConfig.commandPalette.sections.quickActions && siteConfig.commandPalette.quickActions.enabled && 
-           (siteConfig.commandPalette.quickActions.toggleMode || 
-            siteConfig.commandPalette.quickActions.graphView || 
+          {siteConfig.commandPalette.sections.quickActions && siteConfig.commandPalette.quickActions.enabled &&
+           (siteConfig.commandPalette.quickActions.toggleMode ||
+            siteConfig.commandPalette.quickActions.graphView ||
             siteConfig.commandPalette.quickActions.changeTheme) && (
             <div class="p-2">
               <div class="px-3 py-2 text-xs font-medium text-primary-500 dark:text-primary-400 uppercase tracking-wide">
                 Quick Actions
               </div>
               {siteConfig.commandPalette.quickActions.toggleMode && (
-                <button 
+                <button
                   data-action="toggle-theme"
                   class="w-full flex items-center space-x-3 px-3 py-2 text-left hover:bg-primary-50 dark:hover:bg-primary-800 rounded-lg transition-colors group"
                 >
@@ -94,9 +94,9 @@ import Icon from './Icon.astro';
                   <span class="text-primary-900 dark:text-primary-50">Toggle Light/Dark Mode</span>
                 </button>
               )}
-              
+
               {siteConfig.commandPalette.quickActions.graphView && siteConfig.postOptions.graphView.enabled && (
-                <button 
+                <button
                   data-action="open-graph"
                   class="w-full flex items-center space-x-3 px-3 py-2 text-left hover:bg-primary-50 dark:hover:bg-primary-800 rounded-lg transition-colors group"
                 >
@@ -104,9 +104,9 @@ import Icon from './Icon.astro';
                   <span class="text-primary-900 dark:text-primary-50">Graph View</span>
                 </button>
               )}
-              
+
               {siteConfig.commandPalette.quickActions.changeTheme && (
-                <button 
+                <button
                   data-action="change-theme"
                   class="w-full flex items-center space-x-3 px-3 py-2 text-left hover:bg-primary-50 dark:hover:bg-primary-800 rounded-lg transition-colors group"
                 >
@@ -126,14 +126,14 @@ import Icon from './Icon.astro';
               {siteConfig.navigation.pages.map(page => {
                 const hasChildren = page.children && page.children.length > 0;
                 const hasUrl = page.url && page.url.trim() !== '';
-                
+
                 if (hasChildren) {
                   // Parent item with children - show grouped
                   return (
                     <div class="command-palette-nav-group">
                       {/* Parent item */}
                       {hasUrl ? (
-                        <a 
+                        <a
                           href={page.url}
                           class="w-full flex items-center space-x-3 px-3 py-2 hover:bg-primary-50 dark:hover:bg-primary-800 rounded-lg transition-colors group"
                           target={page.url.startsWith('http') ? '_blank' : undefined}
@@ -152,7 +152,7 @@ import Icon from './Icon.astro';
                       )}
                       {/* Children items (indented) */}
                       {page.children.map(child => (
-                        <a 
+                        <a
                           href={child.url || '#'}
                           class="w-full flex items-center space-x-3 px-3 py-2 pl-8 hover:bg-primary-50 dark:hover:bg-primary-800 rounded-lg transition-colors group"
                           target={child.url?.startsWith('http') ? '_blank' : undefined}
@@ -169,7 +169,7 @@ import Icon from './Icon.astro';
                 } else {
                   // Regular navigation item without children
                   return (
-                    <a 
+                    <a
                       href={page.url || '#'}
                       class="w-full flex items-center space-x-3 px-3 py-2 hover:bg-primary-50 dark:hover:bg-primary-800 rounded-lg transition-colors group"
                       target={page.url?.startsWith('http') ? '_blank' : undefined}
@@ -193,7 +193,7 @@ import Icon from './Icon.astro';
                 Social
               </div>
               {(siteConfig.navigation.social || []).filter((social) => social && social.url && social.icon).map(social => (
-                <a 
+                <a
                   href={social.url}
                   target="_blank"
                   class="w-full flex items-center space-x-3 px-3 py-2 hover:bg-primary-50 dark:hover:bg-primary-800 rounded-lg transition-colors group"
@@ -296,7 +296,7 @@ import Icon from './Icon.astro';
     private init() {
       // Add event listener to open the palette via custom event
       window.addEventListener('openCommandPalette', () => this.open());
-      
+
       // Add event listener to close the palette when the close button is clicked
       const closeButton = document.getElementById('command-palette-close');
       if (closeButton) {
@@ -306,7 +306,7 @@ import Icon from './Icon.astro';
           this.close();
         });
       }
-      
+
       // Add event listener to close the palette if clicked outside the modal content
       this.overlay.addEventListener('click', (e) => {
         // Close if clicking the overlay or anywhere outside the modal content
@@ -340,7 +340,7 @@ import Icon from './Icon.astro';
           const href = commandPaletteLink.getAttribute('href');
           if (href) {
             this.close();
-            
+
             // Navigate after a small delay to ensure the palette closes first
             setTimeout(() => {
               if (href.startsWith('http') && !href.includes(window.location.hostname)) {
@@ -365,7 +365,7 @@ import Icon from './Icon.astro';
           this.close();
         }
       });
-      
+
       // Command+K shortcut is handled globally in BaseLayout
     }
 
@@ -401,7 +401,7 @@ import Icon from './Icon.astro';
         // Load posts if enabled in search config
         if (searchConfig.posts) {
           promises.push(
-            fetch('/api/posts.json').then(response => 
+            fetch('/api/posts.json').then(response =>
               response.ok ? response.json() : []
             )
           );
@@ -425,7 +425,7 @@ import Icon from './Icon.astro';
         // Load projects if enabled in search config AND projects content type is enabled
         if (searchConfig.projects && optionalContentTypes.projects) {
           promises.push(
-            fetch('/api/projects.json').then(response => 
+            fetch('/api/projects.json').then(response =>
               response.ok ? response.json() : []
             )
           );
@@ -464,11 +464,11 @@ import Icon from './Icon.astro';
       try {
         // Add a small delay to ensure the module is ready
         await new Promise(resolve => setTimeout(resolve, 100));
-        
+
         // Try to load Fuse.js with better error handling
         const fuseModule = await import('fuse.js');
         const Fuse = fuseModule.default || fuseModule;
-        
+
         if (typeof Fuse === 'function') {
           this.fuse = new Fuse(this.items, {
             keys: [
@@ -591,9 +591,9 @@ import Icon from './Icon.astro';
         // Check if we're showing search results or default items
         const searchResultsVisible = !this.searchResults.classList.contains('hidden');
         const defaultItemsVisible = !this.defaultItems.classList.contains('hidden');
-        
+
         let items: NodeListOf<Element>;
-        
+
         if (searchResultsVisible) {
           // Get search result items
           items = this.searchResults.querySelectorAll('.command-palette-item');
@@ -623,7 +623,7 @@ import Icon from './Icon.astro';
       this.showDefault(); // Show default items initially
       document.body.style.overflow = 'hidden'; // Prevent background scrolling
       // Don't call setInitialTheme() here - it should only be called once during initialization
-      
+
       // Apply visual highlighting to the preserved selection after a brief delay
       // to ensure the DOM is ready
       setTimeout(() => {
@@ -637,13 +637,13 @@ import Icon from './Icon.astro';
       this.input.blur(); // Remove focus from input
       this.input.value = ''; // Clear search input
       // Don't reset selectedIndex - preserve it for next time palette opens
-      
+
       // Clear search timeout if active
       if (this.searchTimeout) {
         clearTimeout(this.searchTimeout);
         this.searchTimeout = null;
       }
-      
+
       // Use global scroll restoration function
       if ((window as any).restoreScroll) {
         (window as any).restoreScroll();
@@ -772,13 +772,13 @@ import Icon from './Icon.astro';
       if (index > -1) {
         this.searchHistory.splice(index, 1);
       }
-      
+
       // Add to beginning
       this.searchHistory.unshift(query);
-      
+
       // Keep only last 20 searches
       this.searchHistory = this.searchHistory.slice(0, 20);
-      
+
       // Store in localStorage
       try {
         localStorage.setItem('command-palette-history', JSON.stringify(this.searchHistory));
@@ -806,7 +806,7 @@ import Icon from './Icon.astro';
           this.cache.delete(firstKey);
         }
       }
-      
+
       this.cache.set(key, results);
     }
 
@@ -816,12 +816,12 @@ import Icon from './Icon.astro';
       } else {
         // Add a subtle fade effect when updating results
         this.searchResults.style.opacity = '0.7';
-        
+
         // Use requestAnimationFrame for smooth transition
         requestAnimationFrame(() => {
           this.renderSearchResults();
           this.showSearchResults();
-          
+
           // Fade back to full opacity
           requestAnimationFrame(() => {
             this.searchResults.style.opacity = '1';
@@ -877,15 +877,15 @@ import Icon from './Icon.astro';
 
           const header = document.createElement('div');
           header.className = 'px-3 py-2 text-xs font-medium text-primary-500 dark:text-primary-400 uppercase tracking-wide';
-          
+
           // Format section titles
           const sectionTitles = {
             posts: 'Posts',
-            pages: 'Pages', 
+            pages: 'Pages',
             projects: 'Projects',
             docs: 'Documentation'
           };
-          
+
           header.textContent = `${sectionTitles[type as keyof typeof sectionTitles]} (${items.length})`;
           container.appendChild(header);
 
@@ -947,11 +947,11 @@ import Icon from './Icon.astro';
           const scrollTop = scrollContainer.scrollTop;
           const startIndex = Math.floor(scrollTop / ITEM_HEIGHT);
           const endIndex = Math.min(startIndex + VISIBLE_ITEMS, items.length);
-          
+
           // Clear and re-render visible items
           viewport.innerHTML = '';
           this.renderVisibleItems(viewport, items, startIndex, endIndex);
-          
+
           // Update viewport position
           viewport.style.transform = `translateY(${startIndex * ITEM_HEIGHT}px)`;
         }, 16); // ~60fps
@@ -964,13 +964,13 @@ import Icon from './Icon.astro';
 
     private renderVisibleItems(container: HTMLElement, items: CommandPaletteItem[], startIndex: number, endIndex: number) {
       const fragment = document.createDocumentFragment();
-      
+
       for (let i = startIndex; i < endIndex; i++) {
         const item = items[i];
         const anchor = this.createResultItem(item, i);
         fragment.appendChild(anchor);
       }
-      
+
       container.appendChild(fragment);
     }
 
@@ -979,12 +979,12 @@ import Icon from './Icon.astro';
       anchor.href = item.url;
       anchor.dataset.index = index.toString();
       anchor.className = `command-palette-item w-full flex items-start space-x-3 px-3 py-3 hover:bg-primary-50 dark:hover:bg-primary-800 rounded-lg transition-colors group ${index === this.selectedIndex ? 'bg-primary-50 dark:bg-primary-800' : ''}`;
-      
+
       // Add click handler to close the palette when clicked
       anchor.addEventListener('click', (e) => {
         e.preventDefault();
         this.close();
-        
+
         // Navigate after a small delay to ensure the palette closes first
         setTimeout(() => {
           if (item.url.startsWith('http') && !item.url.includes(window.location.hostname)) {
@@ -1000,11 +1000,11 @@ import Icon from './Icon.astro';
           }
         }, 50);
       });
-      
+
       // Add icon based on content type
       const iconDiv = document.createElement('div');
       iconDiv.className = 'w-4 h-4 text-primary-500 dark:text-primary-400 group-hover:text-highlight-500 mt-0.5';
-      
+
       let iconPath = '';
       switch (item.type) {
         case 'post':
@@ -1023,7 +1023,7 @@ import Icon from './Icon.astro';
         default:
           iconPath = '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>';
       }
-      
+
       iconDiv.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${iconPath}</svg>`;
       anchor.appendChild(iconDiv);
 
@@ -1052,7 +1052,7 @@ import Icon from './Icon.astro';
     // Helper method to highlight search terms in text
     private highlightSearchTerm(text: string, searchTerm: string): string {
       if (!searchTerm.trim()) return text;
-      
+
       const regex = new RegExp(`(${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
       return text.replace(regex, '<mark class="bg-highlight-200 dark:bg-highlight-800 text-highlight-900 dark:text-highlight-100 px-1 rounded">$1</mark>');
     }
@@ -1062,9 +1062,9 @@ import Icon from './Icon.astro';
       const searchResultsVisible = !this.searchResults.classList.contains('hidden');
       const defaultItemsVisible = !this.defaultItems.classList.contains('hidden');
       const themeSelectionVisible = !this.themeSelection.classList.contains('hidden');
-      
+
       let items: NodeListOf<Element>;
-      
+
       if (searchResultsVisible) {
         // Get search result items
         items = this.searchResults.querySelectorAll('.command-palette-item');
@@ -1117,24 +1117,24 @@ import Icon from './Icon.astro';
     private scrollIntoView(element: Element) {
       // Find the scrollable container
       const scrollContainer = this.results;
-      
+
       if (!scrollContainer) return;
 
       const containerRect = scrollContainer.getBoundingClientRect();
       const elementRect = element.getBoundingClientRect();
-      
+
       // Check if element is above the visible area
       if (elementRect.top < containerRect.top) {
-        element.scrollIntoView({ 
-          behavior: 'smooth', 
+        element.scrollIntoView({
+          behavior: 'smooth',
           block: 'nearest',
           inline: 'nearest'
         });
       }
       // Check if element is below the visible area
       else if (elementRect.bottom > containerRect.bottom) {
-        element.scrollIntoView({ 
-          behavior: 'smooth', 
+        element.scrollIntoView({
+          behavior: 'smooth',
           block: 'nearest',
           inline: 'nearest'
         });
@@ -1146,28 +1146,28 @@ import Icon from './Icon.astro';
       if (this.selectedIndex < 0 && items.length > 0) {
         this.selectedIndex = 0;
       }
-      
+
       // If an item is selected, navigate to its URL or trigger its action
       if (this.selectedIndex >= 0 && items[this.selectedIndex]) {
         const item = items[this.selectedIndex] as HTMLElement;
-        
+
         // Check if this is a "change-theme" action - we need to keep palette open for theme selection
-        const isChangeThemeAction = item.tagName === 'BUTTON' && 
-                                    item.hasAttribute('data-action') && 
+        const isChangeThemeAction = item.tagName === 'BUTTON' &&
+                                    item.hasAttribute('data-action') &&
                                     item.getAttribute('data-action') === 'change-theme';
-        
+
         // Only close the palette if it's not a "change-theme" action
         if (!isChangeThemeAction) {
           this.close();
         }
-        
+
         // Ensure scroll is fully restored before navigation
         setTimeout(() => {
           if (item.tagName === 'A') {
             // Handle anchor links (pages, social links)
             const anchor = item as HTMLAnchorElement;
             const isExternal = anchor.href.startsWith('http') && !anchor.href.includes(window.location.hostname);
-            
+
             if (isExternal) {
               // For external links, open in new tab
               window.open(anchor.href, '_blank');
@@ -1258,16 +1258,16 @@ import Icon from './Icon.astro';
 
       // Available themes from src/themes/index.ts
       const allThemes = [
-        'minimal', 'oxygen', 'atom', 'ayu', 'catppuccin', 'charcoal', 'dracula', 
-        'everforest', 'flexoki', 'gruvbox', 'macos', 'nord', 'obsidian', 
+        'minimal', 'oxygen', 'atom', 'ayu', 'catppuccin', 'charcoal', 'dracula',
+        'everforest', 'flexoki', 'gruvbox', 'macos', 'nord', 'obsidian',
         'rose-pine', 'sky', 'solarized', 'things'
       ];
 
       // Get current theme using the new preference system
       let currentTheme = (window as any).siteConfig?.theme || 'oxygen'; // Default to config theme
-      
+
       const themePreference = localStorage.getItem('themePreference');
-      
+
       if (themePreference === 'default') {
         // User explicitly chose to follow the site's default theme
         currentTheme = (window as any).siteConfig?.theme || 'oxygen';
@@ -1290,16 +1290,16 @@ import Icon from './Icon.astro';
 
       // Get default theme from config
       const defaultTheme = (window as any).siteConfig?.theme || 'oxygen';
-      
+
       // Only include 'custom' in the list if config theme is set to 'custom'
       const configTheme = (window as any).siteConfig?.theme;
       if (configTheme === 'custom') {
         allThemes.push('custom');
       }
-      
+
       // Get available themes from config
       const configAvailableThemes = (window as any).siteConfig?.availableThemes || 'default';
-      
+
       // Filter themes based on config
       let filteredThemes;
       if (configAvailableThemes === 'default') {
@@ -1319,13 +1319,13 @@ import Icon from './Icon.astro';
         // Fallback to all themes
         filteredThemes = allThemes;
       }
-      
+
       // Always include the selected theme, even if not in availableThemes
       const selectedTheme = (window as any).siteConfig?.theme;
       if (selectedTheme && !filteredThemes.includes(selectedTheme)) {
         filteredThemes.unshift(selectedTheme); // Add to beginning so it appears first
       }
-      
+
       // Reorder themes to put default theme first
       const themes = [defaultTheme, ...filteredThemes.filter(theme => theme !== defaultTheme)];
 
@@ -1335,14 +1335,14 @@ import Icon from './Icon.astro';
         const button = document.createElement('button');
         const isCurrentTheme = theme === currentTheme;
         const isDefaultTheme = theme === defaultTheme;
-        
+
         button.className = `w-full flex items-center justify-between px-3 py-2 text-left hover:bg-primary-50 dark:hover:bg-primary-800 rounded-lg transition-colors group ${isCurrentTheme ? 'bg-primary-50 dark:bg-primary-800' : ''}`;
         button.dataset.theme = theme;
         button.dataset.index = index.toString();
 
         const themeName = (window as any).getThemeDisplayName ? (window as any).getThemeDisplayName(theme) : theme.charAt(0).toUpperCase() + theme.slice(1).replace('-', ' ');
         const displayName = isDefaultTheme ? `${themeName} (Default)` : themeName;
-        
+
         button.innerHTML = `
           <span class="text-primary-900 dark:text-primary-50">${displayName}</span>
           ${isCurrentTheme ? '<svg class="w-4 h-4 text-highlight-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>' : ''}
@@ -1359,10 +1359,10 @@ import Icon from './Icon.astro';
     private async selectTheme(theme: string) {
       // Apply theme change
       await this.applyTheme(theme);
-      
+
       // Update the theme list to reflect the new selection
       this.populateThemeList();
-      
+
       // Close the palette
       this.close();
     }
@@ -1373,20 +1373,20 @@ import Icon from './Icon.astro';
         console.warn('Theme switching is not available - theme change blocked');
         return;
       }
-      
+
       // Validate theme is available before applying
       if ((window as any).isThemeAvailable && !(window as any).isThemeAvailable(themeName)) {
         console.warn('Theme is not available:', themeName);
         return;
       }
-      
+
       // Use the global changeTheme function from BaseLayout.astro
       if ((window as any).changeTheme) {
         await (window as any).changeTheme(themeName);
       } else {
         // Fallback if global function is not available
         const configTheme = (window as any).siteConfig?.theme || 'oxygen';
-        
+
         // Store theme preference based on selection
         if (themeName === configTheme) {
           // User selected the default theme - store as 'default' preference
@@ -1395,14 +1395,14 @@ import Icon from './Icon.astro';
           // User selected a specific theme - store as 'specific:theme-name'
           localStorage.setItem('themePreference', `specific:${themeName}`);
         }
-        
+
         // Also maintain backward compatibility with selectedTheme for now
         localStorage.setItem('selectedTheme', themeName);
         document.documentElement.setAttribute('data-theme', themeName);
-        
+
         // Trigger theme change event for other components
-        window.dispatchEvent(new CustomEvent('themechange', { 
-          detail: { theme: themeName } 
+        window.dispatchEvent(new CustomEvent('themechange', {
+          detail: { theme: themeName }
         }));
       }
     }
@@ -1415,9 +1415,9 @@ import Icon from './Icon.astro';
         // Theme is already applied, don't override it
         return;
       }
-      
+
       const savedTheme = localStorage.getItem('selectedTheme');
-      
+
       if (savedTheme) {
         document.documentElement.setAttribute('data-theme', savedTheme);
       } else {

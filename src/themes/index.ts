@@ -42,7 +42,7 @@ export const themes = {
   minimal: {
     primary: {
       50: '#fafafa',
-      100: '#f5f5f5', 
+      100: '#f5f5f5',
       200: '#e5e5e5',
       300: '#d4d4d4',
       400: '#a3a3a3',
@@ -517,8 +517,8 @@ export function getThemeNames(): ThemeName[] {
 // Check if a theme name is a custom theme (not in built-in themes)
 export function isCustomTheme(themeName: string): boolean {
   const builtInThemes = [
-    'minimal', 'oxygen', 'atom', 'ayu', 'catppuccin', 'charcoal', 'dracula', 
-    'everforest', 'flexoki', 'gruvbox', 'macos', 'nord', 'obsidian', 
+    'minimal', 'oxygen', 'atom', 'ayu', 'catppuccin', 'charcoal', 'dracula',
+    'everforest', 'flexoki', 'gruvbox', 'macos', 'nord', 'obsidian',
     'rose-pine', 'sky', 'solarized', 'things', 'custom'
   ];
   return !builtInThemes.includes(themeName);

@@ -314,17 +314,17 @@ export function getAdjacentDocs<T extends { id: string; data: { category?: strin
 ) {
   // Filter docs by the same category
   const categoryDocs = docs.filter((doc) => {
-    const docCategory = doc.data.category && 
-      doc.data.category.trim() !== '' && 
+    const docCategory = doc.data.category &&
+      doc.data.category.trim() !== '' &&
       doc.data.category !== 'General'
       ? doc.data.category
       : null;
-    
+
     // If current doc has no category, match docs with no category
     if (!currentCategory) {
       return !docCategory;
     }
-    
+
     // Match exact category
     return docCategory === currentCategory;
   });

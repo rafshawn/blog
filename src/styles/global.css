@@ -813,32 +813,19 @@ textarea {
   @apply border-l-4 border-primary-300 dark:border-primary-600 pl-6 py-2 bg-primary-50 dark:bg-primary-800/30 rounded-lg;
 }
 
-/* Default image styling - centered, no cropping */
+/* Default image styling */
 .prose img {
   @apply rounded-lg shadow-sm;
+}
+
+/* Obsidian-sized images - respect manual width/height, centered, no cropping */
+.prose img.obsidian-sized {
   display: block;
   margin-left: auto;
   margin-right: auto;
   max-width: 100%;
   height: auto;
   object-fit: contain;
-}
-
-/* Paragraphs containing only images should have reduced margins */
-.prose p:has(img:only-child) {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-/* Obsidian-sized images - respect manual width/height, no forced aspect ratio */
-.prose img.obsidian-sized {
-  max-width: none; /* Allow images to exceed container if specified */
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  /* Ensure centering is maintained */
-  margin-left: auto;
-  margin-right: auto;
 }
 
 /* Ensure manually-sized images in grids don't get forced into grid aspect ratio */
@@ -854,29 +841,9 @@ textarea {
   aspect-ratio: auto !important;
 }
 
-/* Ensure obsidian-sized images that are NOT in galleries remain centered */
-.prose p img.obsidian-sized {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Paragraphs with only obsidian-sized images should have minimal margins */
-.prose p:has(img.obsidian-sized:only-child) {
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
-}
-
 /* Hide <br> elements after obsidian-sized images to prevent unwanted gaps */
-/* This allows text to behave as a caption without a large break */
 .prose img.obsidian-sized + br {
   display: none;
-}
-
-/* Ensure paragraphs with obsidian-sized image + text have proper spacing */
-.prose p:has(img.obsidian-sized) {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
 }
 
 .prose mark {
